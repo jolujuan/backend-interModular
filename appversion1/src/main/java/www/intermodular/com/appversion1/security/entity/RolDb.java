@@ -1,6 +1,6 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.entity;
+package www.intermodular.com.appversion1.security.entity;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.enums.RolNombre;
+import www.intermodular.com.appversion1.security.entity.enums.RolNombre;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

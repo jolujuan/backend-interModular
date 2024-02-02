@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.dto;
+package www.intermodular.com.appversion1.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

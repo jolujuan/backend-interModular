@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security;
+package www.intermodular.com.appversion1.security;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.jwt.JwtAuthenticationFilter;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.service.UserDetailsServiceImpl;
+import www.intermodular.com.appversion1.security.jwt.JwtAuthenticationFilter;
+import www.intermodular.com.appversion1.security.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 @Configuration

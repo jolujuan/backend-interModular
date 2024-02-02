@@ -1,5 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.controller;
-
+package www.intermodular.com.appversion1.security.controller;
 public class RepositoryEntity<T> {
 
 }

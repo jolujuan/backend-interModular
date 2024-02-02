@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.service;
+package www.intermodular.com.appversion1.security.service;
 
 import java.util.Optional;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.RolDb;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.enums.RolNombre;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.repository.RolRepository;
+import www.intermodular.com.appversion1.security.entity.RolDb;
+import www.intermodular.com.appversion1.security.entity.enums.RolNombre;
+import www.intermodular.com.appversion1.security.repository.RolRepository;
 import jakarta.validation.constraints.NotNull;
 
 @Service

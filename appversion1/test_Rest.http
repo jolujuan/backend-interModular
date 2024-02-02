@@ -36,9 +36,7 @@ Content-Type: application/json
 ###
 ## get allPorteros
 
-GET http://localhost:8090/api/v1/porteros HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlcnJhIiwiaWF0IjoxNzA2NzkwNzI3LCJleHAiOjE3MDY4MjY3Mjd9.UPaMX_tDNF7IHxoDgM9dJ97BZPyntMPGTQcnijeji54
-###
+
 ## nuevo prueba
 POST  http://localhost:8090/auth/nuevo HTTP/1.1
 Content-Type: application/json

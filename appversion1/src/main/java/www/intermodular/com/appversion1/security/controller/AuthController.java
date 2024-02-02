@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.controller;
+package www.intermodular.com.appversion1.security.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,16 +20,16 @@ import jakarta.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.dto.JwtDto;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.dto.LoginUsuario;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.dto.Mensaje;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.dto.NuevoUsuario;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.RolDb;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.UsuarioDb;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.enums.RolNombre;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.jwt.JwtService;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.service.RolService;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.service.UsuarioService;
+import www.intermodular.com.appversion1.security.dto.JwtDto;
+import www.intermodular.com.appversion1.security.dto.LoginUsuario;
+import www.intermodular.com.appversion1.security.dto.Mensaje;
+import www.intermodular.com.appversion1.security.dto.NuevoUsuario;
+import www.intermodular.com.appversion1.security.entity.RolDb;
+import www.intermodular.com.appversion1.security.entity.UsuarioDb;
+import www.intermodular.com.appversion1.security.entity.enums.RolNombre;
+import www.intermodular.com.appversion1.security.jwt.JwtService;
+import www.intermodular.com.appversion1.security.service.RolService;
+import www.intermodular.com.appversion1.security.service.UsuarioService;
 
 @RestController
 @RequestMapping("/auth")

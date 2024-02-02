@@ -1,12 +1,12 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.service;
+package www.intermodular.com.appversion1.security.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.UsuarioDb;
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.repository.UsuarioRepository;
+import www.intermodular.com.appversion1.security.entity.UsuarioDb;
+import www.intermodular.com.appversion1.security.repository.UsuarioRepository;
 import jakarta.validation.constraints.NotNull;
 
 @Service

@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.swagger;
+package www.intermodular.com.appversion1.swagger;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

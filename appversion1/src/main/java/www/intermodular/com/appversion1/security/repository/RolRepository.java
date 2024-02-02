@@ -1,12 +1,12 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.repository;
+package www.intermodular.com.appversion1.security.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.RolDb;
+import www.intermodular.com.appversion1.security.entity.RolDb;
 
 import java.util.Optional;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.enums.RolNombre;
+import www.intermodular.com.appversion1.security.entity.enums.RolNombre;
 
 
 public interface RolRepository extends JpaRepository<RolDb, Integer>{

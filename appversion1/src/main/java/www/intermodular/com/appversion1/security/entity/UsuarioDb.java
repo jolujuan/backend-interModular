@@ -1,4 +1,4 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.entity;
+package www.intermodular.com.appversion1.security.entity;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,11 +1,11 @@
-package edu.alumno.ismael.apr_rest_mysql_futbol.security.jwt;
+package www.intermodular.com.appversion1.security.jwt;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import edu.alumno.ismael.apr_rest_mysql_futbol.security.entity.UsuarioPrincipal;
+import www.intermodular.com.appversion1.security.entity.UsuarioPrincipal;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
