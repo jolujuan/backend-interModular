@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Appversion1Application<appversion1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "www.intermodular.com.appversion1.Appversion1Application",
+            "projectName": "appversion1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
