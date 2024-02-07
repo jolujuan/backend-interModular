@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `usuarios_estadisticas`(
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- -----------------------------------
---RELACIONADO CON EL JUEGO
+-- RELACIONADO CON EL JUEGO
 -- -----------------------------------
 DROP TABLE IF EXISTS `questions_answers`;
 
@@ -76,12 +76,13 @@ CREATE TABLE IF NOT EXISTS `questions_answers` (
     `results_correct_answer` VARCHAR(12) CHARACTER SET utf8,
     `results_incorrect_answers` VARCHAR(20) CHARACTER SET utf8,
     PRIMARY KEY (`idPregunta`)
+
 	/* ALTER TABLE `questions_answers` ADD COLUMN `idPregunta` BIGINT;
 	ALTER TABLE `questions_answers` ADD CONSTRAINT `questions_answers_fk_usuarios` FOREIGN KEY (`idPregunta`) REFERENCES `usuarios` (`id`); */
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 INSERT INTO `questions_answers` ( results_type, results_difficulty, results_category, results_question, results_correct_answer, results_incorrect_answers) VALUES 
-	/**** FOR GEOGRAPHY ****/
+	-- FOR GEOGRAPHY ****/
 	('multiple', 'easy', 'geography', '¿Cuál de las siguientes islas japonesas es la más grande?', 'Honshu', 'Hokkaido, Shikoku, Kyushu'),
     ('multiple', 'easy', 'geography', 'Groenlandia es parte de ¿cuál reino?', 'Dinamarca', 'Suecia, Noruega, Reino Unido'),
     ('multiple', 'easy', 'geography', '¿Con cuántos países limita México?', '3', '2, 4, 1'),
@@ -93,7 +94,7 @@ INSERT INTO `questions_answers` ( results_type, results_difficulty, results_cate
     ('multiple', 'easy', 'geography', 'Todos los siguientes se clasifican como lenguas finoúgricas EXCEPTO:', 'Samoyedo', 'Húngaro, Finés, Estonio'),
     ('multiple', 'easy', 'geography', '¿Cuál es la capital de India?', 'Nueva Delhi', 'Bejing, Montreal, Tithi'),
 
-	/**** FOR PEOPLE ****/
+	-- FOR PEOPLE ****/
 
     ('multiple', 'easy', 'celebrity', '¿En qué suele centrar sus películas el cineasta Dan Bell?', 'Edificios abandonados y centros comerciales muertos', 'Lugares históricos, Películas de acción, Documentales'),
     ('multiple', 'easy', 'celebrity', 'Gwyneth Paltrow tiene una hija llamada...?', 'Apple', 'Lily, French, Dakota'),
@@ -106,7 +107,7 @@ INSERT INTO `questions_answers` ( results_type, results_difficulty, results_cate
     ('multiple', 'easy', 'celebrity', '¿Cuál fue el último papel cinematográfico de James Coburn antes de su muerte?', 'American Gun', 'Monsters Inc, Texas Rangers, Snow Dogs'),
     ('multiple', 'easy', 'celebrity', '¿Por qué nombre es mejor conocido Carlos Estevez?', 'Charlie Sheen', 'Ricky Martin, Bruno Mars, Joaquin Phoenix'),
 
-	/**** FOR ANIMALS ****/
+	-- FOR ANIMALS ****/
 
     ('multiple', 'easy', 'animals', '¿Cómo se llama a un bebé murciélago?', 'Cachorro', 'Cub, Polluelo, Cría'),
     ('multiple', 'easy', 'animals', '¿De qué color es la hembra del mirlo?', 'Marrón', 'Negro, Blanco, Amarillo'),
@@ -119,7 +120,7 @@ INSERT INTO `questions_answers` ( results_type, results_difficulty, results_cate
     ('multiple', 'easy', 'animals', '¿Cómo se llama la morada de un conejo?', 'Madriguera', 'Nido, Cueva, Drey'),
     ('multiple', 'easy', 'animals', '¿Cuál es el nombre científico de los humanos modernos?', 'Homo Sapiens', 'Homo Ergaster, Homo Erectus, Homo Neanderthalensis'),
 
-	/**** FOR HISTORY ****/
+	-- FOR HISTORY ****/
 
     ('boolean', 'easy', 'history', 'Adolf Hitler fue un soldado alemán en la Primera Guerra Mundial.', 'True', 'False'),
     ('boolean', 'easy', 'history', 'Estados Unidos de América fue el primer país en lanzar un hombre al espacio.', 'False', 'True'),
