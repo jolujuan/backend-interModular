@@ -30,10 +30,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 DROP TABLE IF EXISTS `usuarios_roles`;
 
 CREATE TABLE IF NOT EXISTS `usuarios_roles` (
-    idPregunta BigInt NOT NULL,
     idRol INT(11) NOT NULL,
-    PRIMARY KEY (`idPregunta`, `idRol`),
-    CONSTRAINT `usuarios_roles_fk_usuarios` FOREIGN KEY (`idPregunta`) REFERENCES `usuarios` (`id`),
     CONSTRAINT `usuarios_roles_fk_roles` FOREIGN KEY (`idRol`) REFERENCES `roles` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
