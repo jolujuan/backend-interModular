@@ -71,10 +71,10 @@ CREATE TABLE IF NOT EXISTS `questions_answers` (
    `idPregunta` BIGINT NOT NULL AUTO_INCREMENT,
     `results_type` VARCHAR(8) CHARACTER SET utf8,
     `results_difficulty` VARCHAR(4) CHARACTER SET utf8,
-    `results_category` VARCHAR(9) CHARACTER SET utf8,
-    `results_question` VARCHAR(75) CHARACTER SET utf8,
-    `results_correct_answer` VARCHAR(12) CHARACTER SET utf8,
-    `results_incorrect_answers` VARCHAR(20) CHARACTER SET utf8,
+    `results_category` VARCHAR(100) CHARACTER SET utf8,
+    `results_question` VARCHAR(150) CHARACTER SET utf8,
+    `results_correct_answer` VARCHAR(70) CHARACTER SET utf8,
+    `results_incorrect_answers` VARCHAR(100) CHARACTER SET utf8,
     PRIMARY KEY (`idPregunta`)
 
 	/* ALTER TABLE `questions_answers` ADD COLUMN `idPregunta` BIGINT;
