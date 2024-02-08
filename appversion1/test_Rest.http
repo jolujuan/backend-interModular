@@ -65,4 +65,4 @@ Content-Type: application/json
 ##getAllPorteros con JWGT
 
 GET  http://localhost:8090/api/v1/questions HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlcnJhIiwiaWF0IjoxNzA3Mzg2NTM4LCJleHAiOjE3MDc0MjI1Mzh9.FGCBEwxl4ilX8aVYL92J4SxfPBvclNW4T4Z52OdMjN4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDczODg3OTUsImV4cCI6MTcwNzQyNDc5NX0.np2vpha9-hQmaG5MeydAwTbasa3b9lbx0t9PHhukjj8

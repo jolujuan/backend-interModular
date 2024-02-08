@@ -27,19 +27,24 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- -----------------------------------------------------
 -- Table `usuarios_roles`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `usuarios_roles`;
+DROP TABLE IF EXISTS `usuarios_roles` ;
 
-CREATE TABLE IF NOT EXISTS `usuarios_roles` (
-    idRol INT(11) NOT NULL,
-    CONSTRAINT `usuarios_roles_fk_roles` FOREIGN KEY (`idRol`) REFERENCES `roles` (`id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+CREATE  TABLE IF NOT EXISTS `usuarios_roles` (
+  idUsuario BigInt  NOT NULL,  
+  idRol INT(11)  NOT NULL,
+  PRIMARY KEY (`idUsuario`,`idRol`),
+  CONSTRAINT `usuarios_roles_fk_usuarios`
+    FOREIGN KEY (`idUsuario` )
+    REFERENCES `usuarios` (`id` ),
+  CONSTRAINT `usuarios_roles_fk_roles`
+    FOREIGN KEY (`idRol` )
+    REFERENCES `roles` (`id` ) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
-INSERT INTO
-    `roles` (`id`, `nombre`)
-VALUES
-    (1, 'ROLE_ADMIN'),
-    (2, 'ROLE_USER');
-
+INSERT INTO `roles` (`id`, `nombre`) VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');
 -- -----------------------------------------------------
 -- FIN TABLAS NECESARIAS PARA IMPLEMENTAR LA SEGURIDAD ====LOGIN/REGISTRO
 -- -----------------------------------------------------
@@ -66,19 +71,18 @@ DROP TABLE IF EXISTS `questions_answers`;
 
 CREATE TABLE IF NOT EXISTS `questions_answers` (
    `idPregunta` BIGINT NOT NULL AUTO_INCREMENT,
-    `results_type` VARCHAR(8) CHARACTER SET utf8,
-    `results_difficulty` VARCHAR(4) CHARACTER SET utf8,
-    `results_category` VARCHAR(100) CHARACTER SET utf8,
-    `results_question` VARCHAR(150) CHARACTER SET utf8,
-    `results_correct_answer` VARCHAR(70) CHARACTER SET utf8,
-    `results_incorrect_answers` VARCHAR(100) CHARACTER SET utf8,
+    `resultsType` VARCHAR(8) CHARACTER SET utf8,
+    `resultsDifficulty` VARCHAR(4) CHARACTER SET utf8,
+    `resultsCategory` VARCHAR(100) CHARACTER SET utf8,
+    `resultsQuestion` VARCHAR(150) CHARACTER SET utf8,
+    `resultsCorrectAnswer` VARCHAR(70) CHARACTER SET utf8,
+    `resultsIncorrectAnswers` VARCHAR(100) CHARACTER SET utf8,
     PRIMARY KEY (`idPregunta`)
 
-	/* ALTER TABLE `questions_answers` ADD COLUMN `idPregunta` BIGINT;
-	ALTER TABLE `questions_answers` ADD CONSTRAINT `questions_answers_fk_usuarios` FOREIGN KEY (`idPregunta`) REFERENCES `usuarios` (`id`); */
+	
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
-INSERT INTO `questions_answers` ( results_type, results_difficulty, results_category, results_question, results_correct_answer, results_incorrect_answers) VALUES 
+INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategory, resultsQuestion, resultsCorrectAnswer, resultsIncorrectAnswers) VALUES 
 	-- FOR GEOGRAPHY ****/
 	('multiple', 'easy', 'geography', '¿Cuál de las siguientes islas japonesas es la más grande?', 'Honshu', 'Hokkaido, Shikoku, Kyushu'),
     ('multiple', 'easy', 'geography', 'Groenlandia es parte de ¿cuál reino?', 'Dinamarca', 'Suecia, Noruega, Reino Unido'),
