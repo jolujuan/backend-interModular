@@ -58,20 +58,33 @@ public class AuthController {
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         {
             if (bindingResult.hasErrors())
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje("Datos incorrectos o email inválido"));
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new Mensaje("Datos incorrectos o email inválido"));
             if (usuarioService.existsByNickname(nuevoUsuario.getNickname()))
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje("Ese nickname ya existe"));
             if (usuarioService.existsByEmail(nuevoUsuario.getEmail()))
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje("Ese email ya existe"));
 
-            UsuarioDb usuarioDb =
-                     new UsuarioDb(nuevoUsuario.getNombre(), nuevoUsuario.getNickname(),
+            UsuarioDb usuarioDb = new UsuarioDb(nuevoUsuario.getNombre(), nuevoUsuario.getNickname(),
                     nuevoUsuario.getEmail(),
                     passwordEncoder.encode(nuevoUsuario.getPassword()));
             Set<RolDb> rolesDb = new HashSet<>();
-            rolesDb.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
-            if (nuevoUsuario.getRoles().contains("admin"))
-                rolesDb.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+            /* rolesDb.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get()); */
+            
+            try {
+                RolDb rolUser = rolService.getByRolNombre(RolNombre.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+                rolesDb.add(rolUser);
+        
+                if (nuevoUsuario.getRoles().contains("admin")) {
+                    RolDb rolAdmin = rolService.getByRolNombre(RolNombre.ROLE_ADMIN)
+                            .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+                    rolesDb.add(rolAdmin);
+                }
+            } catch (RuntimeException e) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Mensaje(e.getMessage()));
+            }
+
             usuarioDb.setRoles(rolesDb);
             usuarioService.save(usuarioDb);
             return ResponseEntity.status(HttpStatus.CREATED).body(new Mensaje("Usuario creado"));
