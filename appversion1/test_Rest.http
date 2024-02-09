@@ -65,4 +65,8 @@ Content-Type: application/json
 ##getAllPorteros con JWGT
 
 GET  http://localhost:8090/api/v1/questions HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDczODg3OTUsImV4cCI6MTcwNzQyNDc5NX0.np2vpha9-hQmaG5MeydAwTbasa3b9lbx0t9PHhukjj8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njc0NDIsImV4cCI6MTcwNzUwMzQ0Mn0.YS8mhMSwQtNWrUK0-JRmUfHBX5-k7PWcb3ytVytWkps
+
+###
+GET http://localhost:8090/api/v1/questions/category/animals
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njc0NDIsImV4cCI6MTcwNzUwMzQ0Mn0.YS8mhMSwQtNWrUK0-JRmUfHBX5-k7PWcb3ytVytWkps
