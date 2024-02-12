@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS casillaTipo;
 
 CREATE TABLE IF NOT EXISTS casillaTipo (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL')
+    tipocasilla  ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL') UNIQUE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
@@ -68,9 +68,10 @@ DROP TABLE IF EXISTS casilla;
 CREATE TABLE IF NOT EXISTS casilla (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     numero INT,
-    tipoCasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'),
-    FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo(name)
+    tipoCasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL') UNIQUE,
+    CONSTRAINT fk_tipoCasilla FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo(tipocasilla)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+
 
 -- -----------------------------------
 -- Dado Movimiento // no se sabe si se va a usar
@@ -93,8 +94,8 @@ CREATE TABLE IF NOT EXISTS jugador (
     posicion INT, -- no se usa de momento
     turnoPerdido BOOLEAN,-- de momento no se si hara
     preguntasFalladas INT,-- de momento no usar
-    CONSTRAINT usuarioJugador FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
-    CONSTRAINT fk_jugador_usuario_nickname FOREIGN KEY (nombre) REFERENCES usuarios(nickname)
+    CONSTRAINT `usuarioJugador` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios`(`id`),
+    CONSTRAINT `fk_jugador_usuario_nickname` FOREIGN KEY (`nombre`) REFERENCES `usuarios`(`nickname`)
      
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
@@ -113,11 +114,11 @@ CREATE TABLE IF NOT EXISTS tablero (
     turnoJugador BigInt,
     jugador2 BigInt,
     ganador BigInt DEFAULT 0,-- guardara el id del que gane
-    FOREIGN KEY (jugador1) REFERENCES jugador(id),
-    FOREIGN KEY (jugador2) REFERENCES jugador(id),
-    FOREIGN KEY (casillaJugador1) REFERENCES casilla(id),
-    FOREIGN KEY (casillaJugador2) REFERENCES casilla(id),
-    FOREIGN KEY (estado) REFERENCES estadoTablero(name)
+    FOREIGN KEY (`jugador1`) REFERENCES `jugador`(`idUsuario`),
+    FOREIGN KEY (`jugador2`) REFERENCES `jugador`(`idUsuario`),
+    FOREIGN KEY (`casillaJugador1`) REFERENCES `casilla`(`id`),
+    FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`),
+    FOREIGN KEY (`estado`) REFERENCES `estadoTablero`(`name`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
