@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS casillaTipo;
 CREATE TABLE IF NOT EXISTS casillaTipo (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL')
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
 -- CASILLA
@@ -68,19 +68,19 @@ DROP TABLE IF EXISTS casilla;
 CREATE TABLE IF NOT EXISTS casilla (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     numero INT,
-    tipoCasilla VARCHAR(20),
-    FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo (name)
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+    tipoCasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'),
+    FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo(name)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
--- Dado Movimiento
+-- Dado Movimiento // no se sabe si se va a usar
 -- -----------------------------------
 DROP TABLE IF EXISTS dadoMovimiento;
 
 CREATE TABLE IF NOT EXISTS dadoMovimiento (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     valor INT
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
 -- Jugador
@@ -88,12 +88,15 @@ CREATE TABLE IF NOT EXISTS dadoMovimiento (
 DROP TABLE IF EXISTS jugador;
 
 CREATE TABLE IF NOT EXISTS jugador (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    posicion INT,
-    turnoPerdido BOOLEAN,
-    preguntasFalladas INT
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+    idUsuario BIGINT NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    posicion INT, -- no se usa de momento
+    turnoPerdido BOOLEAN,-- de momento no se si hara
+    preguntasFalladas INT,-- de momento no usar
+    CONSTRAINT usuarioJugador FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
+    CONSTRAINT fk_jugador_usuario_nickname FOREIGN KEY (nombre) REFERENCES usuarios(nickname)
+     
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
 -- Tablero
@@ -101,19 +104,21 @@ CREATE TABLE IF NOT EXISTS jugador (
 DROP TABLE IF EXISTS tablero;
 
 CREATE TABLE IF NOT EXISTS tablero (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    idTablero BIGINT AUTO_INCREMENT PRIMARY KEY,
     estado VARCHAR(15),
     preguntashechas VARCHAR(255),
     jugador1 BigInt,
     casillaJugador1 BigInt,
     casillaJugador2 BigInt,
+    turnoJugador BigInt,
     jugador2 BigInt,
+    ganador BigInt DEFAULT 0,-- guardara el id del que gane
     FOREIGN KEY (jugador1) REFERENCES jugador(id),
     FOREIGN KEY (jugador2) REFERENCES jugador(id),
     FOREIGN KEY (casillaJugador1) REFERENCES casilla(id),
       FOREIGN KEY (casillaJugador2) REFERENCES casilla(id)
     FOREIGN KEY (estado) REFERENCES estadoTablero(name)
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
 -- Estado Tablero
@@ -121,9 +126,12 @@ CREATE TABLE IF NOT EXISTS tablero (
 DROP TABLE IF EXISTS estadoTablero;
 
 CREATE TABLE IF NOT EXISTS estadoTablero (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA')
-); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+    idTablero BigInt ,
+    name ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA'),
+     CONSTRAINT `tableroiEstado`
+    FOREIGN KEY (`idTablero` )
+    REFERENCES `tablero` (`idTablero` )
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 
 
@@ -217,6 +225,10 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
     ('boolean', 'easy', 'history', 'Adolf Hitler fue juzgado en los juicios de Núremberg.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True');
 
+
+-- ------------------------
+-- inserts de casillas
+-- ------------------------
 INSERT INTO casilla (numero, tipoCasilla) VALUES 
     (1, 'inicial'),
     (2, 'normal'),
