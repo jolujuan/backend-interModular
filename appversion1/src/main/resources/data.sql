@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS casillaTipo;
 
 CREATE TABLE IF NOT EXISTS casillaTipo (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    tipocasilla  ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL') UNIQUE
+    tipocasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL') UNIQUE
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
@@ -68,9 +68,10 @@ DROP TABLE IF EXISTS casilla;
 CREATE TABLE IF NOT EXISTS casilla (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     numero INT,
-    tipoCasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL') UNIQUE,
+    tipoCasilla ENUM('SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'),
     CONSTRAINT fk_tipoCasilla FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo(tipocasilla)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+
 
 
 -- -----------------------------------
@@ -225,25 +226,38 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
     ('boolean', 'easy', 'history', 'Adolf Hitler fue juzgado en los juicios de Núremberg.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True');
 
+-- ------------------------
+--
+-- ------------------------
+INSERT INTO casillaTipo (tipocasilla) VALUES 
+    ('SALIDA'),
+    ('BONIFICACION'),
+    ('PENALIZACION'),
+    ('RETROCESO'),
+    ('LLEGADA'),
+    ('NORMAL');
+
+
+
 
 -- ------------------------
--- inserts de casillas
+-- inserts de casillas //'SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'
 -- ------------------------
 INSERT INTO casilla (numero, tipoCasilla) VALUES 
-    (1, 'inicial'),
-    (2, 'normal'),
-    (3, 'bonificación'),
-    (4, 'normal'),
-    (5, 'bonificación'),
-    (6, 'normal'),
-    (7, 'retroceso'),
-    (8, 'normal'),
-    (9, 'bonificación'),
-    (10, 'normal'),
-    (11, 'bonificación'),
-    (12, 'normal'),
-    (13, 'retroceso'),
-    (14, 'normal'),
-    (15, 'bonificación'),
-    (16, 'normal'),
-    (17, 'salida');
+    (1, 'SALIDA'),
+    (2, 'NORMAL'),
+    (3, 'BONIFICACION'),
+    (4, 'NORMAL'),
+    (5, 'BONIFICACION'),
+    (6, 'NORMAL'),
+    (7, 'RETROCESO'),
+    (8, 'NORMAL'),
+    (9, 'BONIFICACION'),
+    (10, 'NORMAL'),
+    (11, 'BONIFICACION'),
+    (12, 'NORMAL'),
+    (13, 'RETROCESO'),
+    (14, 'NORMAL'),
+    (15, 'BONIFICACION'),
+    (16, 'NORMAL'),
+    (17, 'LLEGADA');
