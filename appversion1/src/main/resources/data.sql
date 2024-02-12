@@ -117,22 +117,21 @@ CREATE TABLE IF NOT EXISTS tablero (
     FOREIGN KEY (`jugador1`) REFERENCES `jugador`(`idUsuario`),
     FOREIGN KEY (`jugador2`) REFERENCES `jugador`(`idUsuario`),
     FOREIGN KEY (`casillaJugador1`) REFERENCES `casilla`(`id`),
-    FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`),
-    FOREIGN KEY (`estado`) REFERENCES `estadoTablero`(`estado`)
+    FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
 -- Estado Tablero
 -- -----------------------------------
-DROP TABLE IF EXISTS estadoTablero;
+-- DROP TABLE IF EXISTS estadoTablero;
 
-CREATE TABLE IF NOT EXISTS estadoTablero (
-    idTablero BigInt ,
-    estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') UNIQUE,
-    CONSTRAINT `tableroiEstado`
-    FOREIGN KEY (`idTablero` )
-    REFERENCES `tablero` (`idTablero` )
-) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
+-- CREATE TABLE IF NOT EXISTS estadoTablero (
+   -- idTablero BigInt ,
+  --  estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') UNIQUE,
+  --  CONSTRAINT `tableroiEstado`
+  --  FOREIGN KEY (`idTablero` )
+  --  REFERENCES `tablero` (`idTablero` )
+-- ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 
 
