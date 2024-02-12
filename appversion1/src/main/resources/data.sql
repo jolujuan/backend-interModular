@@ -51,5 +51,5 @@ INSERT INTO `roles` (`id`, `nombre`) VALUES
 (2, 'ROLE_USER');
 
 -- -----------------------------------------------------
--- FIN TABLAS NECESARIAS PARA IMPLEMENTAR LA SEGURIDAD ====LOGIN/REGISTRO
+-- FIN TABLAS NECESARIAS PARA IMPLEMENTAR LA SEGURIDAD ==== LOGIN/REGISTRO
 -- -----------------------------------------------------
