@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS tablero (
     FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
--- -----------------------------------
+-- -----------------------------------aa
 -- Estado Tablero
 -- -----------------------------------
 -- DROP TABLE IF EXISTS estadoTablero;
