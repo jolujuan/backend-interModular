@@ -12,7 +12,7 @@ import www.intermodular.com.appversion1.model.dto.JugadorInfo;
 import www.intermodular.com.appversion1.model.dto.QuestionsAnswersInfo;
 import www.intermodular.com.appversion1.model.dto.TableroInfo;
 import www.intermodular.com.appversion1.repository.JugadorRepository;
-import www.intermodular.com.appversion1.repository.QuestionsAnswersRepository;
+import www.intermodular.com.appversion1.repository.QuestionAnswerRepository;
 import www.intermodular.com.appversion1.repository.TableroRepository;
 import www.intermodular.com.appversion1.service.DadoMovimientoService;
 import www.intermodular.com.appversion1.service.JuegoService;
@@ -20,14 +20,14 @@ import www.intermodular.com.appversion1.service.JugadorService;
 import www.intermodular.com.appversion1.service.QuestionsAnswersService;
 import www.intermodular.com.appversion1.service.TableroService;
 import www.intermodular.com.appversion1.service.mapper.JugadorMapper;
-import www.intermodular.com.appversion1.service.mapper.QuestionsAnswersMapper;
+import www.intermodular.com.appversion1.service.mapper.QuestionsAnswerMapper;
 import www.intermodular.com.appversion1.service.mapper.TableroMapper;
 
 
 @Service
 public class JuegoServiceImpl implements JuegoService{
     private final TableroRepository tableroRepository;
-    private final QuestionsAnswersRepository questionsAnswersRepository;
+    private final QuestionAnswerRepository questionAnswerRepository;
     private final JugadorRepository jugadorRepository;
     private JugadorService jugadorService;
     private TableroService tableroService;
@@ -35,9 +35,9 @@ public class JuegoServiceImpl implements JuegoService{
     private DadoMovimientoService dadoMovimientoService;
 
     @Autowired
-    public JuegoServiceImpl(TableroRepository tableroRepository, QuestionsAnswersRepository questionsAnswersRepository, JugadorRepository jugadorRepository) {
+    public JuegoServiceImpl(TableroRepository tableroRepository, QuestionAnswerRepository questionAnswerRepository, JugadorRepository jugadorRepository) {
         this.tableroRepository = tableroRepository;
-        this.questionsAnswersRepository = questionsAnswersRepository;
+        this.questionAnswerRepository = questionAnswerRepository;
         this.jugadorRepository = jugadorRepository;
     }
 
@@ -68,7 +68,7 @@ public class JuegoServiceImpl implements JuegoService{
         QuestionsAnswersInfo tematicaPregunta = questionsAnswersService.obtenerTematica();
 
         // Obtenemos una pregunta aleatoria de la temática obtenida        
-        QuestionsAnswersInfo pregunta = QuestionsAnswersMapper.INSTANCE.preguntaDbToPreguntaInfo(questionsAnswersRepository.findRandomQuestionByCategory(tematicaPregunta.getResults_category_questions()));
+        QuestionsAnswersInfo pregunta = QuestionsAnswerMapper.INSTANCE.questionsToQuestionAnswerList(questionsAnswersRepository.findRandomQuestionByCategory(tematicaPregunta.getResults_category_questions()));
 
         // Presentamos la pregunta al jugador para que responda
         presentarCartaAlJugador(jugador, pregunta);

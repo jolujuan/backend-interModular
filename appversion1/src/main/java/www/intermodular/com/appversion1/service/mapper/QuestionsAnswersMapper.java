@@ -10,9 +10,9 @@ import www.intermodular.com.appversion1.model.dto.QuestionsAnswersInfo;
 import www.intermodular.com.appversion1.model.dto.QuestionsAnswersList;
 
 
-@Mapper(uses = QuestionsAnswersMapper.class)
-public interface QuestionsAnswersMapper {
-    QuestionsAnswersMapper INSTANCE= Mappers.getMapper(QuestionsAnswersMapper.class);
-    List<QuestionsAnswersList> tematicasDbToTematicasList(List<QuestionsAnswersDb> tematicaDb);
-    QuestionsAnswersInfo preguntaDbToPreguntaInfo(QuestionsAnswersDb preguntaDb);
-}
+// @Mapper(uses = QuestionsAnswersMapper.class)
+// public interface QuestionsAnswersMapper {
+//     QuestionsAnswersMapper INSTANCE= Mappers.getMapper(QuestionsAnswersMapper.class);
+//     List<QuestionsAnswersList> tematicasDbToTematicasList(List<QuestionsAnswersDb> tematicaDb);
+//     QuestionsAnswersInfo preguntaDbToPreguntaInfo(QuestionsAnswersDb preguntaDb);
+// }
