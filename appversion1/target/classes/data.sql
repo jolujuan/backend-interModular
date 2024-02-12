@@ -68,8 +68,7 @@ DROP TABLE IF EXISTS casilla;
 CREATE TABLE IF NOT EXISTS casilla (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     numero INT,
-    tipoCasilla VARCHAR(20),  
-    tableroId BIGINT,
+    tipoCasilla VARCHAR(20),
     FOREIGN KEY (tipoCasilla) REFERENCES casillaTipo (name)
 ); ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
@@ -218,3 +217,21 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
     ('boolean', 'easy', 'history', 'Adolf Hitler fue juzgado en los juicios de Núremberg.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True');
 
+INSERT INTO casilla (numero, tipoCasilla) VALUES 
+    (1, 'inicial'),
+    (2, 'normal'),
+    (3, 'bonificación'),
+    (4, 'normal'),
+    (5, 'bonificación'),
+    (6, 'normal'),
+    (7, 'retroceso'),
+    (8, 'normal'),
+    (9, 'bonificación'),
+    (10, 'normal'),
+    (11, 'bonificación'),
+    (12, 'normal'),
+    (13, 'retroceso'),
+    (14, 'normal'),
+    (15, 'bonificación'),
+    (16, 'normal'),
+    (17, 'salida');
