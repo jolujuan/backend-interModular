@@ -54,4 +54,23 @@ public class QuestionsAnswerServiceImpl implements QuestionsAnswerService {
     public List<QuestionAnswerList> getRandomQuestionByCategory(String category) {
         return QuestionsAnswerMapper.INSTANCE.questionsToQuestionAnswerList(questionAnswerRepository.findRandomQuestionByCategory(category));
     }
+    public boolean isAnswerCorrect(Long idPregunta, String resultsCorrectAnswer) {
+        Optional<QuestionAnswerDB> optionalQuestionAnswer = questionAnswerRepository.findById(idPregunta);
+        if (optionalQuestionAnswer.isPresent()) {
+            QuestionAnswerDB questionAnswer = optionalQuestionAnswer.get();
+            return questionAnswer.getResultsCorrectAnswer().equals(resultsCorrectAnswer);
+        } else {
+            return false; // Devuelve false si la pregunta no se encuentra
+        }
+    }
+
+    @Override
+    public String getAnswerCorect(Long idPregunta) {
+        Optional<QuestionAnswerDB> optionalQuestionAnswer = questionAnswerRepository.findById(idPregunta);
+        if (optionalQuestionAnswer.isPresent()) {
+        return optionalQuestionAnswer.get().getResultsCorrectAnswer();
+    } else {
+        return "error"; // Devuelve false si la pregunta no se encuentra
+    }
+    }
 }
