@@ -1,3 +1,4 @@
+
 -- -----------------------------------------------------
 -- Table `usuarios`
 -- -----------------------------------------------------
@@ -133,3 +134,4 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
     ('boolean', 'easy', 'history', 'El Departamento de Seguridad Nacional de Estados Unidos se formó en respuesta a los ataques del 11 de septiembre.', 'True', 'False'),
     ('boolean', 'easy', 'history', 'Adolf Hitler fue juzgado en los juicios de Núremberg.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True');
+
