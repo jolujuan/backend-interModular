@@ -54,6 +54,9 @@ INSERT INTO `roles` (`id`, `nombre`) VALUES
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `usuarios_estadisticas`;
 
+
+
+
 CREATE TABLE IF NOT EXISTS `usuarios_estadisticas`(
     `idUsuario` BIGINT NOT NULL,
     `PartidasTotales` BIGINT DEFAULT 0,
