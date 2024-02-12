@@ -11,9 +11,9 @@ import www.intermodular.com.appversion1.model.dto.PaginaDto;
 import www.intermodular.com.appversion1.model.dto.QuestionAnswerList;
 
 public interface QuestionsAnswerService {
-    
+    public String getAnswerCorect(Long idPregunta);
     public PaginaDto<QuestionAnswerList> findAllPageQuestionAnswerList(Pageable pageable);
     public List<QuestionAnswerList> findAllQuestionsAnswerCategoria(String results_category,Sort sort);
     public List<QuestionAnswerList> getRandomQuestionByCategory(String category);
-
+    public boolean isAnswerCorrect(Long idPregunta,String resultsCorrectAnswer);
 }

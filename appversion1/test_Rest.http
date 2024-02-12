@@ -68,5 +68,16 @@ GET  http://localhost:8090/api/v1/questions HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
 
 ###
+## getQuestionRandom with a category
 GET http://localhost:8090/api/v1/questions/category/animals
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
+
+###
+## Send answer Question
+GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanyz&idPregunta=7 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
+
+
+
+###
+

@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -97,6 +98,7 @@ public class QuestionsAnswerController {
             Collections.shuffle(shuffledAnswers);
             String shuffledAnswersString = String.join(", ", shuffledAnswers);
             // pasamos solo ResultsQuestion en este parametro
+            response.put("idQuestion", getquestion.get(0).getIdPregunta());
             response.put("question", getquestion.get(0).getResultsQuestion());
             response.put("answer1",shuffledAnswers.get(0));
             response.put("answer2",shuffledAnswers.get(1));
@@ -107,5 +109,23 @@ public class QuestionsAnswerController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+     @GetMapping("/questions/answer")
+    public ResponseEntity<Map<String, Object>> answerQuestion(
+            @RequestParam("resultsCorrectAnswer") String resultsCorrectAnswer,
+            @RequestParam("idPregunta") Long idPregunta) {
+                try {
+                    boolean isCorrect = questionsAnswerService.isAnswerCorrect(idPregunta, resultsCorrectAnswer);
+                    String respuestaCorrecta = questionsAnswerService.getAnswerCorect(idPregunta);
+                
+                 Map<String, Object> response = new HashMap<>();
+                 response.put("Result", isCorrect ? "La respuesta es correcta." : "La respuesta es incorrecta."+"La correcta es "+respuestaCorrecta);
+                 return ResponseEntity.ok(response);
+                } catch (Exception e) {
+                    Map<String, Object> errorResponse = new HashMap<>();
+                    errorResponse.put("error", e.getMessage());
+                    return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+                    
+                }
+                
+    }
 }
