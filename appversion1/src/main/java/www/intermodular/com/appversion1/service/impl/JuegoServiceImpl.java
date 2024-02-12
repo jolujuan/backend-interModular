@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv.impl;
+package www.intermodular.com.appversion1.service.impl;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,14 +14,14 @@ import www.intermodular.com.appversion1.model.dto.TableroInfo;
 import www.intermodular.com.appversion1.repository.JugadorRepository;
 import www.intermodular.com.appversion1.repository.QuestionsAnswersRepository;
 import www.intermodular.com.appversion1.repository.TableroRepository;
-import www.intermodular.com.appversion1.srv.DadoMovimientoService;
-import www.intermodular.com.appversion1.srv.JuegoService;
-import www.intermodular.com.appversion1.srv.JugadorService;
-import www.intermodular.com.appversion1.srv.QuestionsAnswersService;
-import www.intermodular.com.appversion1.srv.TableroService;
-import www.intermodular.com.appversion1.srv.mapper.JugadorMapper;
-import www.intermodular.com.appversion1.srv.mapper.QuestionsAnswersMapper;
-import www.intermodular.com.appversion1.srv.mapper.TableroMapper;
+import www.intermodular.com.appversion1.service.DadoMovimientoService;
+import www.intermodular.com.appversion1.service.JuegoService;
+import www.intermodular.com.appversion1.service.JugadorService;
+import www.intermodular.com.appversion1.service.QuestionsAnswersService;
+import www.intermodular.com.appversion1.service.TableroService;
+import www.intermodular.com.appversion1.service.mapper.JugadorMapper;
+import www.intermodular.com.appversion1.service.mapper.QuestionsAnswersMapper;
+import www.intermodular.com.appversion1.service.mapper.TableroMapper;
 
 
 @Service

@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv.impl;
+package www.intermodular.com.appversion1.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import www.intermodular.com.appversion1.model.dto.CasillaList;
 import www.intermodular.com.appversion1.model.dto.CasillaTipo;
 import www.intermodular.com.appversion1.model.dto.TableroInfo;
 import www.intermodular.com.appversion1.repository.TableroRepository;
-import www.intermodular.com.appversion1.srv.TableroService;
-import www.intermodular.com.appversion1.srv.mapper.TableroMapper;
+import www.intermodular.com.appversion1.service.TableroService;
+import www.intermodular.com.appversion1.service.mapper.TableroMapper;
 
 
 @Service

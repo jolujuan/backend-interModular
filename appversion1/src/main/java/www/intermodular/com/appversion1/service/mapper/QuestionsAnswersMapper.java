@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv.mapper;
+package www.intermodular.com.appversion1.service.mapper;
 
 import java.util.List;
 

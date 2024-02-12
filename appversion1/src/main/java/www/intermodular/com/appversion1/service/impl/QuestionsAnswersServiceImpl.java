@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv.impl;
+package www.intermodular.com.appversion1.service.impl;
 
 import java.util.List;
 import java.util.Random;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import www.intermodular.com.appversion1.model.dto.QuestionsAnswersInfo;
 import www.intermodular.com.appversion1.model.dto.QuestionsAnswersList;
 import www.intermodular.com.appversion1.repository.QuestionsAnswersRepository;
-import www.intermodular.com.appversion1.srv.QuestionsAnswersService;
-import www.intermodular.com.appversion1.srv.mapper.QuestionsAnswersMapper;
+import www.intermodular.com.appversion1.service.QuestionsAnswersService;
+import www.intermodular.com.appversion1.service.mapper.QuestionsAnswersMapper;
 
 
 @Service

@@ -1,12 +1,12 @@
-package www.intermodular.com.appversion1.srv.impl;
+package www.intermodular.com.appversion1.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.intermodular.com.appversion1.model.dto.DadoMovimientoInfo;
 import www.intermodular.com.appversion1.repository.DadoMovimientoRepository;
-import www.intermodular.com.appversion1.srv.DadoMovimientoService;
-import www.intermodular.com.appversion1.srv.mapper.DadoMovimientoMapper;
+import www.intermodular.com.appversion1.service.DadoMovimientoService;
+import www.intermodular.com.appversion1.service.mapper.DadoMovimientoMapper;
 
 
 @Service

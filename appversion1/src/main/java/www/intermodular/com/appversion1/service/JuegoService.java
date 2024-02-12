@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv;
+package www.intermodular.com.appversion1.service;
 
 import www.intermodular.com.appversion1.model.dto.JugadorInfo;
 import www.intermodular.com.appversion1.model.dto.QuestionsAnswersInfo;

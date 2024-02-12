@@ -1,4 +1,4 @@
-package www.intermodular.com.appversion1.srv;
+package www.intermodular.com.appversion1.service;
 
 import org.springframework.stereotype.Service;
 
