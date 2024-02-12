@@ -106,7 +106,7 @@ DROP TABLE IF EXISTS tablero;
 
 CREATE TABLE IF NOT EXISTS tablero (
     idTablero BIGINT AUTO_INCREMENT PRIMARY KEY,
-    estado VARCHAR(15),
+     estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') UNIQUE,
     preguntashechas VARCHAR(255),
     jugador1 BigInt,
     casillaJugador1 BigInt,
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS tablero (
     FOREIGN KEY (`jugador2`) REFERENCES `jugador`(`idUsuario`),
     FOREIGN KEY (`casillaJugador1`) REFERENCES `casilla`(`id`),
     FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`),
-    FOREIGN KEY (`estado`) REFERENCES `estadoTablero`(`name`)
+    FOREIGN KEY (`estado`) REFERENCES `estadoTablero`(`estado`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------
@@ -128,7 +128,7 @@ DROP TABLE IF EXISTS estadoTablero;
 
 CREATE TABLE IF NOT EXISTS estadoTablero (
     idTablero BigInt ,
-    name ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA'),
+    estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') UNIQUE,
     CONSTRAINT `tableroiEstado`
     FOREIGN KEY (`idTablero` )
     REFERENCES `tablero` (`idTablero` )
