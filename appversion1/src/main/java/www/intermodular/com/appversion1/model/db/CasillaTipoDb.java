@@ -23,13 +23,13 @@ import www.intermodular.com.appversion1.model.dto.CasillaTipo;
 @Data
 @Table(name="casillaTipo")
 public class CasillaTipoDb implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
     
-    @Enumerated(EnumType.STRING)
-    private CasillaTipo name; //Corregir si no esta bien
+        @Enumerated(EnumType.STRING)
+        private CasillaTipo tipoCasilla;
+    }
     
-    @OneToMany(mappedBy = "tipo", cascade = CascadeType.ALL)
-    private List<CasillaDb> casillas;
-}
+

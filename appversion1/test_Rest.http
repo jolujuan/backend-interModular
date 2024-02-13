@@ -65,19 +65,20 @@ Content-Type: application/json
 ##getAllPorteros con JWGT
 
 GET  http://localhost:8090/api/v1/questions HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc4Mzk1MjksImV4cCI6MTcwNzg3NTUyOX0.IlgAg_9Gg-VFaDUd8VdpLGUpZJofyIVBEb5O8WJM52g
 
 ###
 ## getQuestionRandom with a category
 GET http://localhost:8090/api/v1/questions/category/animals
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc4Mzk1MjksImV4cCI6MTcwNzg3NTUyOX0.IlgAg_9Gg-VFaDUd8VdpLGUpZJofyIVBEb5O8WJM52g
 
 ###
 ## Send answer Question
 GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanyz&idPregunta=7 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc0Njk5MzEsImV4cCI6MTcwNzUwNTkzMX0.Vj1N26hyc3PpXWNrAMgSihEAuhRdtaFncLOHP44EMyI
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc4Mzk1MjksImV4cCI6MTcwNzg3NTUyOX0.IlgAg_9Gg-VFaDUd8VdpLGUpZJofyIVBEb5O8WJM52g
+### getStartTablero
+POST http://localhost:8090/api/v1/createBoard/prueba
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc4Mzk1MjksImV4cCI6MTcwNzg3NTUyOX0.IlgAg_9Gg-VFaDUd8VdpLGUpZJofyIVBEb5O8WJM52g
 
 ###
 

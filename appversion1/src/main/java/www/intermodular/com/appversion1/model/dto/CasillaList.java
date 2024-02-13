@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class CasillaList implements Serializable{
     private Long id;
-    private int numero;
-    private CasillaTipo tipo;
+
+    private Integer numero;
+
+    
+    private CasillaTipo tipoCasilla;
 }

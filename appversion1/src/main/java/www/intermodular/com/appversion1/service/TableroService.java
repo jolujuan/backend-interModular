@@ -4,7 +4,8 @@ import www.intermodular.com.appversion1.model.dto.CasillaList;
 import www.intermodular.com.appversion1.model.dto.TableroInfo;
 
 public interface TableroService {
-    public CasillaList obtenerCasillaPorPosicion(int posicion);
-     // Método privado para inicializar el tablero
-    public void inicializarTablero(TableroInfo tablero);
+    
+    public Long getIdUserTablero(String nickname);
+    public String getStartTablero(Long idUsuario);
+    public String getAnotherPlayer(String nickname,String player,Long idTablero);
 }

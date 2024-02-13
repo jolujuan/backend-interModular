@@ -9,7 +9,7 @@ import www.intermodular.com.appversion1.model.dto.JugadorInfo;
 
 @Mapper(uses = JugadorMapper.class)
 public interface JugadorMapper {
-    JugadorMapper INSTANCE= Mappers.getMapper(JugadorMapper.class);
-    @Mapping(source="id",target="id_jugador")
-    JugadorInfo JugadoroDbToJugadorInfo(JugadorDb jugadorDb);
+    // JugadorMapper INSTANCE= Mappers.getMapper(JugadorMapper.class);
+    // @Mapping(source="id",target="id_jugador")
+    // JugadorInfo JugadoroDbToJugadorInfo(JugadorDb jugadorDb);
 }

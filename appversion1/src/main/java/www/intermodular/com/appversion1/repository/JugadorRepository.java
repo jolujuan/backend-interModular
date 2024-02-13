@@ -9,5 +9,5 @@ import www.intermodular.com.appversion1.model.db.JugadorDb;
 
 @Repository
 public interface JugadorRepository extends JpaRepository<JugadorDb, Long> {
-    // Aquí podemos agregar métodos adicionales según sea necesario
+    JugadorDb findByIdUsuario(Long idUsuario);
 }

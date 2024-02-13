@@ -107,7 +107,7 @@ DROP TABLE IF EXISTS tablero;
 
 CREATE TABLE IF NOT EXISTS tablero (
     idTablero BIGINT AUTO_INCREMENT PRIMARY KEY,
-     estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') UNIQUE,
+    estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') ,
     preguntashechas VARCHAR(255),
     jugador1 BigInt,
     casillaJugador1 BigInt,

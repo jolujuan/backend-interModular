@@ -1,30 +1,44 @@
 package www.intermodular.com.appversion1.model.db;
 
 import java.io.Serializable;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import www.intermodular.com.appversion1.security.entity.UsuarioDb;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Data
 @Table(name="jugador")
-public class JugadorDb implements Serializable{
+public class JugadorDb implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @JoinColumn(name = "idUsuario")
+    private Long idUsuario;
+
     private String nombre;
-    private int posicion;
-    private boolean turnoPerdido;
-    private int preguntasFalladas;
+
+    private Integer posicion;
+
+    private Boolean turnoPerdido;
+
+    private Integer preguntasFalladas;
+
+    @OneToOne(mappedBy = "jugador1")
+    private TableroDb tableroJugador1;
+
+    @OneToOne(mappedBy = "jugador2")
+    private TableroDb tableroJugador2;
+    
+    @OneToOne
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id", insertable = false, updatable = false)
+    private UsuarioDb usuario;
 }
+
+

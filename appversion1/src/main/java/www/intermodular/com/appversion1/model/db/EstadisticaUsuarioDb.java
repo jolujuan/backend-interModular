@@ -7,11 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import www.intermodular.com.appversion1.model.dto.Usuario;
+import www.intermodular.com.appversion1.security.entity.UsuarioDb;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -19,25 +20,18 @@ import www.intermodular.com.appversion1.model.dto.Usuario;
 @Table(name="usuarios_estadisticas")
 public class EstadisticaUsuarioDb {
     @Id
-    @Column(name = "idUsuario")
+    @JoinColumn(name = "idUsuario")
     private Long idUsuario;
 
-    @Column(name = "PartidasTotales")
-    private Long partidasTotales;
+    private Long PartidasTotales = 0L;
+    private Long PartidasPerdidas = 0L;
+    private Long PreguntasTotales = 0L;
+    private Long PreguntasAcertadas = 0L;
+    private Long PreguntasFalladas = 0L;
 
-    @Column(name = "PartidasPerdidas")
-    private Long partidasPerdidas;
-
-    @Column(name = "PreguntasTotales")
-    private Long preguntasTotales;
-
-    @Column(name = "PreguntasAcertadas")
-    private Long preguntasAcertadas;
-
-    @Column(name = "PreguntasFalladas")
-    private Long preguntasFalladas;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idUsuario", referencedColumnName = "id", insertable = false, updatable = false)
-    private Usuario usuario;
+    private UsuarioDb usuario;
+
+    // Constructor, getters y setters
 }
