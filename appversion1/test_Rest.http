@@ -65,34 +65,46 @@ Content-Type: application/json
 ##getAllPorteros con JWGT
 
 GET  http://localhost:8090/api/v1/questions HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ###
 ## getQuestionRandom with a category
-GET http://localhost:8090/api/v1/questions/category/animals
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+GET http://localhost:8090/api/v1/questions/category/animals  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ###
 ## Send answer Question
 GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanyz&idPregunta=7 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 ### getStartTablero
-POST http://localhost:8090/api/v1/createBoard/prueba
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+POST http://localhost:8090/api/v1/createBoard/prueba  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ###
 
 ### addPlayer
-POST http://localhost:8090/api/v1/addPlayer/name/joserra/table/8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+POST http://localhost:8090/api/v1/addPlayer/name/joserra/table/8  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ### getTableroStatus
 
-GET  http://localhost:8090/api/v1/getStatusBoard/7
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+GET  http://localhost:8090/api/v1/getStatusBoard/7  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ### getStartGame
 
-POST http://localhost:8090/api/v1/startGame/7
+POST http://localhost:8090/api/v1/startGame/7  HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlcnJhIiwiaWF0IjoxNzA3OTEzMzg1LCJleHAiOjE3MDc5NDkzODV9.qU1Vs63I2s7j8fqnwFvd146JaeAd4nuaDJ6O4YGOnOc
+###
+
+### getNumRandom1_4
+GET  http://localhost:8090/api/v1/rolldice/prueba/table/7  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
+
+
+### doMovement
+
+POST  http://localhost:8090/api/v1/movePlayer/prueba/number/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
+
 ###

@@ -3,6 +3,7 @@ package www.intermodular.com.appversion1.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class TableroServiceImpl implements TableroService {
     }
 
     @Override
-    public Long getIdUserTablero(String nickname) {
+    public Long getIdUserJugador(String nickname) {
         Optional<UsuarioDb> usuarioOptional = usuarioRepository.findByNickname(nickname);
         if (usuarioOptional.isPresent()) {
             UsuarioDb usuario = usuarioOptional.get();
@@ -60,7 +61,7 @@ public class TableroServiceImpl implements TableroService {
         }
     }
 
-    @Override //CREATE GAME_BOARD CREAR TABLERO
+    @Override // CREATE GAME_BOARD CREAR TABLERO
     public String getStartTablero(Long idUsuario) {
 
         TableroDb tablero = new TableroDb();
@@ -100,7 +101,7 @@ public class TableroServiceImpl implements TableroService {
         return "IdTablero: " + tablero.getIdTablero() + " Player_1 " + jugador1.getNombre();
     }
 
-    @Override //ADD PLAYER
+    @Override // ADD PLAYER
     public String getAnotherPlayer(String nickname, Long idTable) {
         // encontrar si hay un tabldro con el id
         TableroDb tablero = tableroRepository.findByIdTablero(idTable);
@@ -112,7 +113,7 @@ public class TableroServiceImpl implements TableroService {
         if (tablero.getEstado() == EstadoTablero.EN_CURSO) {
             return "1 ERRO:GAME_IS_ALREADY_STARTED"; // la partida esta finalizada
         }
-        Long idUsuario = getIdUserTablero(nickname);
+        Long idUsuario = getIdUserJugador(nickname);
         // encontrar si hay un jugador con ese id si no crearlo
         JugadorDb newJugador = jugadorRepository.findByIdUsuario(idUsuario);
         if (newJugador == null) {
@@ -197,8 +198,83 @@ public class TableroServiceImpl implements TableroService {
 
         tablero.setEstado(EstadoTablero.EN_CURSO);
         tablero = tableroRepository.save(tablero);
-        
-        return "IdTablero: " + tablero.getIdTablero()+ " Estado "+ tablero.getEstado();
+
+        return "IdTablero: " + tablero.getIdTablero() + " Estado " + tablero.getEstado();
+    }
+
+    @Override
+    public String getRollDice(String nickname, Long idTablero) {
+        final int CASILLAS_TOTALES = 17;
+
+        Random random = new Random();
+
+        // Generar un número aleatorio del 1 al 4
+
+        long numrandom = (long) (random.nextInt(4) + 1);
+        // ver en que casilla esta el jugador , para saber si la tirada le sirve o
+        // pierde turno
+        Long jugador = getIdUserJugador(nickname); // id del que tira
+        TableroDb partidaActual = tableroRepository.findByIdTablero(idTablero);
+        if (partidaActual == null) {
+            return "TABLE_NO_VALID";
+        }
+
+        Long casilla_actual = 0L;
+        String jugadorActual = "";// con esto podre cambiar el turno en caso de que pierda el turno
+
+        // ver que jugador realiza la tirada
+        if (partidaActual.getJugador1().getIdUsuario().equals(jugador)) {
+            casilla_actual = partidaActual.getCasillaJugador1().getId();
+            jugadorActual = "1";
+        } else if (partidaActual.getJugador2().getIdUsuario().equals(jugador)) {
+            casilla_actual = partidaActual.getCasillaJugador2().getId();
+            jugadorActual = "2";
+        } else if (partidaActual.getJugador3().getIdUsuario().equals(jugador)) {
+            casilla_actual = partidaActual.getCasillaJugador3().getId();
+            jugadorActual = "3";
+        } else if (partidaActual.getJugador4().getIdUsuario().equals(jugador)) {
+            casilla_actual = partidaActual.getCasillaJugador4().getId();
+            jugadorActual = "4";
+        } else
+            return "PLAYER_NOT_FOUND";
+
+        // comprobar si es tu turno realmente
+        if (jugador != partidaActual.getTurnoJugador()) {
+            return "NOT_YOUR_TURN";
+        }
+        // comprobar tirada valida
+        if (casilla_actual + numrandom > CASILLAS_TOTALES) {
+            if (jugadorActual.equals("1")) {
+                partidaActual.setTurnoJugador(partidaActual.getJugador2().getIdUsuario());// cambiar el turno al
+                                                                                          // siguiente
+            } else if (jugadorActual.equals("2")) {
+                if (partidaActual.getJugador3().getIdUsuario() == null) {// no hay mas jugadores entonces cambia de
+                                                                         // turno al primero
+                    partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
+                } else
+                    partidaActual.setTurnoJugador(partidaActual.getJugador3().getIdUsuario());// cambiar el turno al
+                                                                                              // siguiente
+            } else if (jugadorActual.equals("3")) {
+                if (partidaActual.getJugador4().getIdUsuario() == null) {// no hay mas jugadores entonces cambia de
+                                                                         // turno al primero
+                    partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
+                } else
+                    partidaActual.setTurnoJugador(partidaActual.getJugador4().getIdUsuario());// cambiar el turno al
+                                                                                              // siguiente
+            }else  if (jugadorActual.equals("4")) {
+                
+                partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());//cambiar el turno al siguiente de vuelta al ciclo
+            } 
+
+
+        tableroRepository.save(partidaActual);
+            return "LOSE_TURN_NUMBER_" + numrandom;
+        }
+
+        // Convertir el número a String
+        String tirarDado = String.valueOf(numrandom);
+
+        return tirarDado;
     }
 
 }

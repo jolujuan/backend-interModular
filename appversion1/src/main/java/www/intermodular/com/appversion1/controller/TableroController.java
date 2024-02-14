@@ -48,6 +48,27 @@ public class TableroController {
             
         }
     }
+    //Rolldice tirar el dado  y comprobar si la tirada es valida
+
+    @GetMapping("rolldice/{nickname}/table/{idTablero}")
+    public ResponseEntity<Map<String, String>>  rolldice(@PathVariable String nickname,@PathVariable Long idTablero) {
+        try {
+            Map<String, String> response = new HashMap<>();
+
+            String tiradaDado = tableroService.getRollDice( nickname,idTablero);
+
+           
+                response.put("RollDice ", tiradaDado);
+          
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+
+            
+        }
+    }
+    
     
 
     @GetMapping("/getStatusBoard/{idTablero}")
@@ -77,7 +98,7 @@ public class TableroController {
     public ResponseEntity<Map<String, String>> getStartGame(@PathVariable String nickname) {
         try {
             Map<String, String> response = new HashMap<>();
-            Long idUserPlayer = tableroService.getIdUserTablero(nickname);
+            Long idUserPlayer = tableroService.getIdUserJugador(nickname);
             String idTableroCreado = tableroService.getStartTablero(idUserPlayer);
 
             response.put("idTablero", idTableroCreado.split(" ")[1]); // conger solo el long del id
