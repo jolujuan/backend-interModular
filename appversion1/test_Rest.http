@@ -94,6 +94,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5M
 ### getStartGame
 
 POST http://localhost:8090/api/v1/startGame/7
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MTMwOTksImV4cCI6MTcwNzk0OTA5OX0.twYQAmleAho3uUBySmp274l8jiTuzZJb7K0DTK0ATSM
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlcnJhIiwiaWF0IjoxNzA3OTEzMzg1LCJleHAiOjE3MDc5NDkzODV9.qU1Vs63I2s7j8fqnwFvd146JaeAd4nuaDJ6O4YGOnOc
 ###
