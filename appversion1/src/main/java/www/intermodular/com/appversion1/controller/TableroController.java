@@ -14,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -24,6 +27,52 @@ public class TableroController {
         this.tableroService = tableroService;
     }
 
+
+    //StartGame
+    @PostMapping("/startGame/{idTablero}")
+    public ResponseEntity<Map<String, String>>  startGame(@PathVariable Long idTablero) {
+        try {
+            Map<String, String> response = new HashMap<>();
+            String idTableroFind = tableroService.getStartGame( idTablero);
+            if (idTableroFind.split(" ").length>0) {
+                response.put("idTablero ", idTableroFind.split(" ")[1]);
+                response.put("State_Game", idTableroFind.split(" ")[3]);
+            }else{
+                response.put("ERROR ", "GAME_CANT_START");
+            }
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+
+            
+        }
+    }
+    
+
+    @GetMapping("/getStatusBoard/{idTablero}")
+    public ResponseEntity<Map<String, String>>  getStatusBoard(@PathVariable Long idTablero) {
+        try {
+            Map<String, String> response = new HashMap<>();
+            String idTableroFind = tableroService.getTablerostatus(idTablero);
+            if (idTableroFind.split(" ").length>4) {
+                response.put("idTablero ", idTableroFind.split(" ")[1]);
+            response.put("Player 1 ", idTableroFind.split(" ")[3]);
+            response.put("Player 2 ", idTableroFind.split(" ")[5]);
+            response.put("Player 3 ", idTableroFind.split(" ")[7]);
+            response.put("Player 4 ", idTableroFind.split(" ")[9]);
+            }else{
+                response.put("ERROR ", "SOME_ERROR_IN_TABLERO");
+            }
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+
+            
+        }
+    }
+    
     @PostMapping("/createBoard/{nickname}")
     public ResponseEntity<Map<String, String>> getStartGame(@PathVariable String nickname) {
         try {

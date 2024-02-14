@@ -60,7 +60,7 @@ public class TableroServiceImpl implements TableroService {
         }
     }
 
-    @Override
+    @Override //CREATE GAME_BOARD CREAR TABLERO
     public String getStartTablero(Long idUsuario) {
 
         TableroDb tablero = new TableroDb();
@@ -100,7 +100,7 @@ public class TableroServiceImpl implements TableroService {
         return "IdTablero: " + tablero.getIdTablero() + " Player_1 " + jugador1.getNombre();
     }
 
-    @Override
+    @Override //ADD PLAYER
     public String getAnotherPlayer(String nickname, Long idTable) {
         // encontrar si hay un tabldro con el id
         TableroDb tablero = tableroRepository.findByIdTablero(idTable);
@@ -108,6 +108,9 @@ public class TableroServiceImpl implements TableroService {
         // controlar si la partida/tablero esta finalizada
         if (tablero.getEstado() == EstadoTablero.FINALIZADO) {
             return "1 ERRO:GAME_IS_FINISHED"; // la partida esta finalizada
+        }
+        if (tablero.getEstado() == EstadoTablero.EN_CURSO) {
+            return "1 ERRO:GAME_IS_ALREADY_STARTED"; // la partida esta finalizada
         }
         Long idUsuario = getIdUserTablero(nickname);
         // encontrar si hay un jugador con ese id si no crearlo
@@ -123,13 +126,21 @@ public class TableroServiceImpl implements TableroService {
             newJugador.setIdUsuario(idUsuario);
             newJugador.setNombre(nickname); // creacion del jugador con Id y Tipo de usuario
 
-            // comprobar que el juego no pueda contener el mismo jugador repetido n veces si es nullo lo controlo para que no pete
-            if (tablero.getJugador1() != null && tablero.getJugador1().getNombre() != null && tablero.getJugador1().getNombre().equals(nickname) ||
-            tablero.getJugador2() != null && tablero.getJugador2().getNombre() != null && tablero.getJugador2().getNombre().equals(nickname) ||
-            tablero.getJugador3() != null && tablero.getJugador3().getNombre() != null && tablero.getJugador3().getNombre().equals(nickname) ||
-            tablero.getJugador4() != null && tablero.getJugador4().getNombre() != null && tablero.getJugador4().getNombre().equals(nickname)) {
-            return "2 ERROR_PLAYER_ALREADY_IN_GAME";
-        }
+            // comprobar que el juego no pueda contener el mismo jugador repetido n veces si
+            // es nullo lo controlo para que no pete
+            if (tablero.getJugador1() != null
+                    && tablero.getJugador1().getNombre() != null && tablero.getJugador1().getNombre().equals(nickname)
+                    ||
+                    tablero.getJugador2() != null && tablero.getJugador2().getNombre() != null
+                            && tablero.getJugador2().getNombre().equals(nickname)
+                    ||
+                    tablero.getJugador3() != null && tablero.getJugador3().getNombre() != null
+                            && tablero.getJugador3().getNombre().equals(nickname)
+                    ||
+                    tablero.getJugador4() != null && tablero.getJugador4().getNombre() != null
+                            && tablero.getJugador4().getNombre().equals(nickname)) {
+                return "2 ERROR_PLAYER_ALREADY_IN_GAME";
+            }
             jugadorRepository.save(newJugador);
             if (tablero.getJugador2() == null) {
 
@@ -161,6 +172,33 @@ public class TableroServiceImpl implements TableroService {
             return "3 ERROR_TABLERO_ID_NOT_FOUND";
         }
 
+    }
+
+    @Override
+    public String getTablerostatus(Long idTablero) {
+
+        TableroDb tablero = tableroRepository.findByIdTablero(idTablero);
+
+        String player1 = tablero.getJugador1() != null ? tablero.getJugador1().getNombre() : "esperando";
+        String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "essperando";
+        String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "esperando";
+        String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "esperando";
+
+        return "IdTablero: " + tablero.getIdTablero()
+                + " Player_1 " + player1
+                + " Player_2 " + player2
+                + " Player_3 " + player3
+                + " Player_4 " + player4;
+    }
+
+    @Override
+    public String getStartGame(Long idTablero) {
+        TableroDb tablero = tableroRepository.findByIdTablero(idTablero);
+
+        tablero.setEstado(EstadoTablero.EN_CURSO);
+        tablero = tableroRepository.save(tablero);
+        
+        return "IdTablero: " + tablero.getIdTablero()+ " Estado "+ tablero.getEstado();
     }
 
 }

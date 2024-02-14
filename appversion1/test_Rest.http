@@ -86,4 +86,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5M
 POST http://localhost:8090/api/v1/addPlayer/name/joserra/table/8
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
 
+### getTableroStatus
+
+GET  http://localhost:8090/api/v1/getStatusBoard/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+
+### getStartGame
+
+POST http://localhost:8090/api/v1/startGame/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5MDEwNTAsImV4cCI6MTcwNzkzNzA1MH0.abNia5yG04axIreSK2ClVTeCQiBSes_yVAlf9HkR2Bg
+
 ###
