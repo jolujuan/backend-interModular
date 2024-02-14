@@ -28,12 +28,17 @@ public class TableroInfo implements Serializable{
    
     private JugadorDb jugador2;
 
+    private JugadorDb jugador3;
+
+    private JugadorDb jugador4;
+
+
     // Relación con la entidad Casilla
     
     private CasillaDb casillaJugador1;
-
-    
     private CasillaDb casillaJugador2;
+    private CasillaDb casillaJugador3;
+    private CasillaDb casillaJugador4;
 
     private Long turnoJugador;
     

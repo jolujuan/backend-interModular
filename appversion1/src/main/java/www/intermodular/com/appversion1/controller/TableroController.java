@@ -28,11 +28,27 @@ public class TableroController {
     public ResponseEntity<Map<String, String>> getStartGame(@PathVariable String nickname) {
         try {
             Map<String, String> response = new HashMap<>();
-            Long  idUserPlayer = tableroService.getIdUserTablero(nickname);
+            Long idUserPlayer = tableroService.getIdUserTablero(nickname);
             String idTableroCreado = tableroService.getStartTablero(idUserPlayer);
 
             response.put("idTablero", idTableroCreado.split(" ")[1]); // conger solo el long del id
-            response.put("Player 1:",idTableroCreado.split(" ")[3]);//que devuelva el nombre jugador
+            response.put("Player 1", idTableroCreado.split(" ")[3]);// que devuelva el nombre jugador
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/addPlayer/name/{nickname}/table/{idTablero}")
+    public ResponseEntity<Map<String, String>> addPlayer(@PathVariable String nickname,@PathVariable Long idTablero) {
+        try {
+            Map<String, String> response = new HashMap<>();
+            String idTableroCreado = tableroService.getAnotherPlayer(nickname, idTablero);
+            response.put("idTablero ", idTableroCreado.split(" ")[1]);
+            response.put("Player 1 ", idTableroCreado.split(" ")[3]);
+            response.put("Player 2 ", idTableroCreado.split(" ")[5]);
+            response.put("Player 3 ", idTableroCreado.split(" ")[7]);
+            response.put("Player 4 ", idTableroCreado.split(" ")[9]);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

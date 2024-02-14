@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -35,13 +36,21 @@ public class TableroDb implements Serializable {
     private String preguntasHechas;
 
     // Relación con la entidad Jugador
-    @OneToOne
+    @ManyToMany
     @JoinColumn(name = "jugador1")
     private JugadorDb jugador1;
 
-    @OneToOne
+    @ManyToMany
     @JoinColumn(name = "jugador2")
     private JugadorDb jugador2;
+
+    @ManyToMany
+    @JoinColumn(name = "jugador3")
+    private JugadorDb jugador3;
+
+    @ManyToMany
+    @JoinColumn(name = "jugador4")
+    private JugadorDb jugador4;
 
     // Relación con la entidad Casilla
     @OneToOne
@@ -51,6 +60,14 @@ public class TableroDb implements Serializable {
     @OneToOne
     @JoinColumn(name = "casillaJugador2")
     private CasillaDb casillaJugador2;
+
+    @OneToOne
+    @JoinColumn(name = "casillaJugador3")
+    private CasillaDb casillaJugador3;
+
+    @OneToOne
+    @JoinColumn(name = "casillaJugador4")
+    private CasillaDb casillaJugador4;
 
     private Long turnoJugador;
     

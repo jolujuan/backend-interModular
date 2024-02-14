@@ -110,15 +110,24 @@ CREATE TABLE IF NOT EXISTS tablero (
     estado ENUM('EN_CURSO', 'FINALIZADO', 'PAUSADA') ,
     preguntashechas VARCHAR(255),
     jugador1 BigInt,
+    jugador2 BigInt,
+    jugador3 BigInt,
+    jugador4 BigInt,
     casillaJugador1 BigInt,
     casillaJugador2 BigInt,
+    casillaJugador3 BigInt,
+    casillaJugador4 BigInt,
     turnoJugador BigInt,
-    jugador2 BigInt,
+    
     ganador BigInt DEFAULT 0,-- guardara el id del que gane
     FOREIGN KEY (`jugador1`) REFERENCES `jugador`(`idUsuario`),
     FOREIGN KEY (`jugador2`) REFERENCES `jugador`(`idUsuario`),
+    FOREIGN KEY (`jugador3`) REFERENCES `jugador`(`idUsuario`),
+    FOREIGN KEY (`jugador4`) REFERENCES `jugador`(`idUsuario`),
     FOREIGN KEY (`casillaJugador1`) REFERENCES `casilla`(`id`),
-    FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`)
+    FOREIGN KEY (`casillaJugador2`) REFERENCES `casilla`(`id`),
+    FOREIGN KEY (`casillaJugador3`) REFERENCES `casilla`(`id`),
+    FOREIGN KEY (`casillaJugador4`) REFERENCES `casilla`(`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1;
 
 -- -----------------------------------aa

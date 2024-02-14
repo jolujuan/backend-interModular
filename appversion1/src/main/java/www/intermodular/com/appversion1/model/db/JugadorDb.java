@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,11 +31,17 @@ public class JugadorDb implements Serializable {
 
     private Integer preguntasFalladas;
 
-    @OneToOne(mappedBy = "jugador1")
+    @ManyToMany(mappedBy = "jugador1")
     private TableroDb tableroJugador1;
 
-    @OneToOne(mappedBy = "jugador2")
+    @ManyToMany(mappedBy = "jugador2")
     private TableroDb tableroJugador2;
+    
+    @ManyToMany(mappedBy = "jugador3")
+    private TableroDb tableroJugador3;
+
+    @ManyToMany(mappedBy = "jugador4")
+    private TableroDb tableroJugador4;
     
     @OneToOne
     @JoinColumn(name = "idUsuario", referencedColumnName = "id", insertable = false, updatable = false)

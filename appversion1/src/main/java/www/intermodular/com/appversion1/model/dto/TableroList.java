@@ -1,4 +1,5 @@
 package www.intermodular.com.appversion1.model.dto;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,8 @@ import www.intermodular.com.appversion1.model.db.JugadorDb;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TableroList implements Serializable{
+public class TableroList implements Serializable {
     private Long idTablero;
-
 
     private EstadoTablero estado;
 
@@ -24,18 +24,21 @@ public class TableroList implements Serializable{
 
     private JugadorDb jugador1;
 
-   
     private JugadorDb jugador2;
 
-    // Relación con la entidad Casilla
-    
-    private CasillaDb casillaJugador1;
+    private JugadorDb jugador3;
 
-    
+    private JugadorDb jugador4;
+
+    // Relación con la entidad Casilla
+
+    private CasillaDb casillaJugador1;
     private CasillaDb casillaJugador2;
+    private CasillaDb casillaJugador3;
+    private CasillaDb casillaJugador4;
 
     private Long turnoJugador;
-    
+
     private Long ganador;
 
 }
