@@ -44,11 +44,17 @@ public class TableroController {
         try {
             Map<String, String> response = new HashMap<>();
             String idTableroCreado = tableroService.getAnotherPlayer(nickname, idTablero);
-            response.put("idTablero ", idTableroCreado.split(" ")[1]);
+            if (idTableroCreado.split(" ").length>4) {
+                response.put("idTablero ", idTableroCreado.split(" ")[1]);
             response.put("Player 1 ", idTableroCreado.split(" ")[3]);
             response.put("Player 2 ", idTableroCreado.split(" ")[5]);
             response.put("Player 3 ", idTableroCreado.split(" ")[7]);
             response.put("Player 4 ", idTableroCreado.split(" ")[9]);
+            }else{
+                response.put("ERROR ", idTableroCreado.split(" ")[1]);
+            }
+
+            
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

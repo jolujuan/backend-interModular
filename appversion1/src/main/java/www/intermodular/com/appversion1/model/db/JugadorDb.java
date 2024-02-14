@@ -31,17 +31,17 @@ public class JugadorDb implements Serializable {
 
     private Integer preguntasFalladas;
 
-    @ManyToMany(mappedBy = "jugador1")
-    private TableroDb tableroJugador1;
+    // @OneToOne(mappedBy = "jugador1")
+    // private TableroDb tableroJugador1;
 
-    @ManyToMany(mappedBy = "jugador2")
-    private TableroDb tableroJugador2;
+    // @OneToOne(mappedBy = "jugador2")
+    // private TableroDb tableroJugador2;
     
-    @ManyToMany(mappedBy = "jugador3")
-    private TableroDb tableroJugador3;
+    // @OneToOne(mappedBy = "jugador3")
+    // private TableroDb tableroJugador3;
 
-    @ManyToMany(mappedBy = "jugador4")
-    private TableroDb tableroJugador4;
+    // @OneToOne(mappedBy = "jugador4")
+    // private TableroDb tableroJugador4;
     
     @OneToOne
     @JoinColumn(name = "idUsuario", referencedColumnName = "id", insertable = false, updatable = false)

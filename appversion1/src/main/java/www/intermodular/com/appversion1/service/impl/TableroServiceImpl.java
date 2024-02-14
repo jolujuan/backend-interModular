@@ -85,11 +85,12 @@ public class TableroServiceImpl implements TableroService {
         // Si el jugador no existe, crearlo
         if (jugador1 == null) {
             jugador1 = new JugadorDb();
-
+            jugador1.setIdUsuario(idUsuario);
+            jugador1.setNombre(getNicknameUserTablero(idUsuario)); 
+            jugadorRepository.save(jugador1);
         }
-        jugador1.setIdUsuario(idUsuario);
-        jugador1.setNombre(getNicknameUserTablero(idUsuario)); // creacion del jugador con Id y Tipo de usuario
-        jugadorRepository.save(jugador1);
+       // creacion del jugador con Id y Tipo de usuario
+       
         tablero.setJugador1(jugador1);
 
         // Guardar el tablero en la base de datos

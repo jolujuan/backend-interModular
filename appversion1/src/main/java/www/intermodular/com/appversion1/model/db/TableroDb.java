@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,36 +36,36 @@ public class TableroDb implements Serializable {
     private String preguntasHechas;
 
     // Relación con la entidad Jugador
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "jugador1")
     private JugadorDb jugador1;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "jugador2")
     private JugadorDb jugador2;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "jugador3")
     private JugadorDb jugador3;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "jugador4")
     private JugadorDb jugador4;
 
     // Relación con la entidad Casilla
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "casillaJugador1")
     private CasillaDb casillaJugador1;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "casillaJugador2")
     private CasillaDb casillaJugador2;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "casillaJugador3")
     private CasillaDb casillaJugador3;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "casillaJugador4")
     private CasillaDb casillaJugador4;
 
