@@ -12,4 +12,5 @@ public interface TableroService {
     public String getStartGame(Long idTablero);
     public String getRollDice(String nickname, Long idTablero);
     public String movePlayer(String nickname, Long numBoxMove ,Long idTable);
+    public String checkMovement(String nickname, String movementTipe, Long idTable);
 }

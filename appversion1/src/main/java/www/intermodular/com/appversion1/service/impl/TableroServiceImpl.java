@@ -287,59 +287,78 @@ public class TableroServiceImpl implements TableroService {
         if (tableActual == null) {
             return "TABLE_NO_VALID";
         }
+        if (!tableActual.getTurnoJugador().equals(idJugador)) {
+            return "NOT_YOUR_TURN";
+        }
 
         // ver que jugador realiza la tirada
         String jugadorActual = "";
+        String casillaTipo = "";
         Long casilla_actual = 0L;
         if (tableActual.getJugador1().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador1().getId();
             // para guardar a que tipo casilla nos movemos
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
-            CasillaTipo casillatipo;
+
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
-            if (nuevaCasilla==null) {
+            if (nuevaCasilla == null) {
                 return " ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador1(nuevaCasilla);
-
+            // devolver el tipo de casilla a la que me muevo
+            CasillaTipo Tipo = nuevaCasilla.getTipoCasilla();
+            casillaTipo = Tipo.name(); // nombre de la casilla
             jugadorActual = "1";
         } else if (tableActual.getJugador2().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador2().getId();
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
-            if (nuevaCasilla==null) {
+            if (nuevaCasilla == null) {
                 return "ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador2(nuevaCasilla);
 
-            //devolver el tipo de casilla a la que me muevo
-            CasillaTipoDb Tipo= nuevaCasilla.getTipoCasilla();
+            // devolver el tipo de casilla a la que me muevo
+            CasillaTipo Tipo = nuevaCasilla.getTipoCasilla();
+            casillaTipo = Tipo.name(); // nombre de la casilla
             jugadorActual = "2";
         } else if (tableActual.getJugador3().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador3().getId();
 
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
-            if (nuevaCasilla==null) {
+            if (nuevaCasilla == null) {
                 return "ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador3(nuevaCasilla);
+            // devolver el tipo de casilla a la que me muevo
+            CasillaTipo Tipo = nuevaCasilla.getTipoCasilla();
+            casillaTipo = Tipo.name(); // nombre de la casilla
             jugadorActual = "3";
         } else if (tableActual.getJugador4().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador4().getId();
 
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
-            if (nuevaCasilla==null) {
+            if (nuevaCasilla == null) {
                 return "ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador4(nuevaCasilla);
+            // devolver el tipo de casilla a la que me muevo
+            CasillaTipo Tipo = nuevaCasilla.getTipoCasilla();
+            casillaTipo = Tipo.name(); // nombre de la casilla
             jugadorActual = "4";
         } else
             return "PLAYER_NOT_FOUND";
 
-            tableroRepository.save(tableActual);
-        return "";
+        tableroRepository.save(tableActual);
+        return casillaTipo;
+    }
+
+    @Override
+    public String checkMovement(String nickname, String movementTipe, Long idTable) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkMovement'");
     }
 
 }
