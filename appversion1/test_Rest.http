@@ -105,12 +105,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5O
 
 ### doMovement
 
-POST  http://localhost:8090/api/v1/movePlayer/joserra/number/3/table/7
+POST  http://localhost:8090/api/v1/movePlayer/prueba/number/2/table/7
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5ODY5ODIsImV4cCI6MTcwODAyMjk4Mn0.Vhy_vQWRBzFByDu4xEEtWHRdPKp4uFnMaJ877wz29R4
 
 ### checkMovement
 
-GET http://localhost:8090/api/v1/checkMovement/RETROCESO/player/joserra/table/7
+POST http://localhost:8090/api/v1/checkMovement/BONIFICACION/player/prueba/table/7
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5ODY5ODIsImV4cCI6MTcwODAyMjk4Mn0.Vhy_vQWRBzFByDu4xEEtWHRdPKp4uFnMaJ877wz29R4
 
 ###

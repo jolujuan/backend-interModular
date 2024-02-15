@@ -354,11 +354,253 @@ public class TableroServiceImpl implements TableroService {
         tableroRepository.save(tableActual);
         return casillaTipo;
     }
+    
 
     @Override
     public String checkMovement(String nickname, String movementTipe, Long idTable) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkMovement'");
+
+        // Sacamos la partida tablero
+        Long idJugador = getIdUserJugador(nickname); // id del que mueve ficha
+        // tablero dnd se mueve la app
+        TableroDb partidaActual = tableroRepository.findByIdTablero(idTable);
+        if (partidaActual == null) {
+            return "TABLE_NO_VALID";
+        }
+        if (!partidaActual.getTurnoJugador().equals(idJugador)) {
+            return "NOT_YOUR_TURN";
+        }
+
+        String jugadorActual = "";
+
+        Long casilla_actual = 0L;
+        // ver que jugador realiza la tirada
+        if (partidaActual.getJugador1().getIdUsuario().equals(idJugador)) {
+            casilla_actual = partidaActual.getCasillaJugador1().getId();
+            jugadorActual = "1";
+        } else if (partidaActual.getJugador2().getIdUsuario().equals(idJugador)) {
+            casilla_actual = partidaActual.getCasillaJugador2().getId();
+            jugadorActual = "2";
+        } else if (partidaActual.getJugador3().getIdUsuario().equals(idJugador)) {
+            casilla_actual = partidaActual.getCasillaJugador3().getId();
+            jugadorActual = "3";
+        } else if (partidaActual.getJugador4().getIdUsuario().equals(idJugador)) {
+            casilla_actual = partidaActual.getCasillaJugador4().getId();
+            jugadorActual = "4";
+        } else
+            return "PLAYER_NOT_FOUND";
+
+        String[] tematicas = { "geography", "celebrity", "animals", "history" };
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(tematicas.length);
+        // Obtener la temática aleatoria
+        String tematicaAleatoria = tematicas[indiceAleatorio]; // Sacaremos una tematica random con esto
+
+        // hacer los cambios segun que jugador y el tipoDecasilla
+        switch (jugadorActual) {
+            case "1":
+                switch (movementTipe) {
+                    case "RETROCEDE": // RETROCEDE TRES CASILLAS Y SE CAMBIA EL TURNO
+                        Long casillaActual = partidaActual.getCasillaJugador1().getId();
+
+                        CasillaDb nuevaCasilla = casillaRepository.findById(casillaActual - 3L).orElse(null); // restamos
+                                                                                                              // 3
+                                                                                                              // casillas
+                                                                                                              // para
+                                                                                                              // que
+                                                                                                              // retroceda
+                        if (nuevaCasilla == null) {
+                            return "ERROR_MOVE_INVALID";
+                        }
+                        partidaActual.setCasillaJugador1(nuevaCasilla);// casilla cambiada
+
+                        break;
+
+                    case "NORMAL":// NO PASA NADA SE PASA EL TURNO
+
+                        break;
+                    case "BONIFICACION": // CASILLA PREGUNTA LE TOCARA AL JUGADOR RESPONDER UNA PREGUNTA Y CONSEGUIR
+                                         // OTRA TIRADA O NO SE PASA EL TURNO
+
+                        return "GET_QUESTION " + tematicaAleatoria;
+
+                    case "LLEGADA":// GANA EL JUGADOR
+
+                        partidaActual.setGanador(idJugador);
+                        tableroRepository.save(partidaActual);
+                        return "WINNER_" + nickname;
+
+                }
+                if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
+                    partidaActual.setTurnoJugador(partidaActual.getCasillaJugador2().getId());
+                    tableroRepository.save(partidaActual);
+                    if (movementTipe.equals("NORMAL")) {
+                        return "NORMAL_DONE_NEXT_TURN";
+                    }
+
+                    if (movementTipe.equals("RETROCEDE")) {
+                        return "RETROCEDE_DONE_NEXT_TURN";
+                    }
+                }
+                break;
+
+            case "2":
+                switch (movementTipe) {
+                    case "RETROCEDE": // RETROCEDE TRES CASILLAS Y SE CAMBIA EL TURNO
+                        Long casillaActual = partidaActual.getCasillaJugador2().getId();
+
+                        CasillaDb nuevaCasilla = casillaRepository.findById(casillaActual - 3L).orElse(null); // restamos
+                                                                                                              // 3
+                                                                                                              // casillas
+                                                                                                              // para
+                                                                                                              // que
+                                                                                                              // retroceda
+                        if (nuevaCasilla == null) {
+                            return "ERROR_MOVE_INVALID";
+                        }
+                        partidaActual.setCasillaJugador2(nuevaCasilla);// casilla cambiada
+
+                        break;
+
+                    case "NORMAL":// NO PASA NADA SE PASA EL TURNO
+                            System.out.println("ENTRA EN HOLA");
+                        break;
+                    case "BONIFICACION": // CASILLA PREGUNTA LE TOCARA AL JUGADOR RESPONDER UNA PREGUNTA Y CONSEGUIR
+                                         // OTRA TIRADA O NO SE PASA EL TURNO
+
+                        return "GET_QUESTION " + tematicaAleatoria;
+
+                    case "LLEGADA":// GANA EL JUGADOR
+
+                        partidaActual.setGanador(idJugador);
+                        tableroRepository.save(partidaActual);
+                        return "WINNER_" + nickname;
+
+                }
+                if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
+                    JugadorDb jugador3= jugadorRepository.findByIdUsuario(casilla_actual);
+
+                    if ( partidaActual.getJugador3()==null || partidaActual.getJugador3().getIdUsuario() == null ) {// no hay mas jugadores entonces cambia de
+                        // turno al primero
+                        partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
+                    } else
+                        partidaActual.setTurnoJugador(partidaActual.getJugador3().getIdUsuario());// cambiar el turno al
+                    // siguiente
+                    tableroRepository.save(partidaActual);
+                    if (movementTipe.equals("NORMAL")) {
+                        return "NORMAL_DONE_NEXT_TURN";
+                    }
+
+                    if (movementTipe.equals("RETROCEDE")) {
+                        return "RETROCEDE_DONE_NEXT_TURN";
+                    }
+                }
+
+                break;
+            case "3":
+                switch (movementTipe) {
+                    case "RETROCEDE": // RETROCEDE TRES CASILLAS Y SE CAMBIA EL TURNO
+                        Long casillaActual = partidaActual.getCasillaJugador3().getId();
+
+                        CasillaDb nuevaCasilla = casillaRepository.findById(casillaActual - 3L).orElse(null); // restamos
+                                                                                                              // 3
+                                                                                                              // casillas
+                                                                                                              // para
+                                                                                                              // que
+                                                                                                              // retroceda
+                        if (nuevaCasilla == null) {
+                            return "ERROR_MOVE_INVALID";
+                        }
+                        partidaActual.setCasillaJugador3(nuevaCasilla);// casilla cambiada
+
+                        break;
+
+                    case "NORMAL":// NO PASA NADA SE PASA EL TURNO
+
+                        break;
+                    case "BONIFICACION": // CASILLA PREGUNTA LE TOCARA AL JUGADOR RESPONDER UNA PREGUNTA Y CONSEGUIR
+                                         // OTRA TIRADA O NO SE PASA EL TURNO
+
+                        return "GET_QUESTION " + tematicaAleatoria;
+
+                    case "LLEGADA":// GANA EL JUGADOR
+
+                        partidaActual.setGanador(idJugador);
+                        tableroRepository.save(partidaActual);
+                        return "WINNER_" + nickname;
+
+                }
+                if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
+                    if (partidaActual.getJugador4().getIdUsuario() == null) {// no hay mas jugadores entonces cambia de
+                        // turno al primero
+                        partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
+                    } else
+                        partidaActual.setTurnoJugador(partidaActual.getJugador4().getIdUsuario());// cambiar el turno al
+                    // siguiente
+                    tableroRepository.save(partidaActual);
+                    if (movementTipe.equals("NORMAL")) {
+                        return "NORMAL_DONE_NEXT_TURN";
+                    }
+
+                    if (movementTipe.equals("RETROCEDE")) {
+                        return "RETROCEDE_DONE_NEXT_TURN";
+                    }
+                }
+
+                break;
+            case "4":
+                switch (movementTipe) {
+                    case "RETROCEDE": // RETROCEDE TRES CASILLAS Y SE CAMBIA EL TURNO
+                        Long casillaActual = partidaActual.getCasillaJugador4().getId();
+
+                        CasillaDb nuevaCasilla = casillaRepository.findById(casillaActual - 3L).orElse(null); // restamos
+                                                                                                              // 3
+                                                                                                              // casillas
+                                                                                                              // para
+                                                                                                              // que
+                                                                                                              // retroceda
+                        if (nuevaCasilla == null) {
+                            return "ERROR_MOVE_INVALID";
+                        }
+                        partidaActual.setCasillaJugador4(nuevaCasilla);// casilla cambiada
+
+                        break;
+
+                    case "NORMAL":// NO PASA NADA SE PASA EL TURNO
+
+                        break;
+                    case "BONIFICACION": // CASILLA PREGUNTA LE TOCARA AL JUGADOR RESPONDER UNA PREGUNTA Y CONSEGUIR
+                                         // OTRA TIRADA O NO SE PASA EL TURNO
+
+                        return "GET_QUESTION " + tematicaAleatoria;
+
+                    case "LLEGADA":// GANA EL JUGADOR
+
+                        partidaActual.setGanador(idJugador);
+                        tableroRepository.save(partidaActual);
+                        return "WINNER_" + nickname;
+
+                }
+                if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
+
+                    // turno al primero
+                    partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
+
+                    tableroRepository.save(partidaActual);
+                    if (movementTipe.equals("NORMAL")) {
+                        return "NORMAL_DONE_NEXT_TURN";
+                    }
+
+                    if (movementTipe.equals("RETROCEDE")) {
+                        return "RETROCEDE_DONE_NEXT_TURN";
+                    }
+                }
+                break;
+            default:
+                return "ERROR_IN_SWITCH";
+        }
+
+        return "";
+
     }
 
 }

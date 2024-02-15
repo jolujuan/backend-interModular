@@ -90,15 +90,15 @@ public class TableroController {
     }
     
     
-    @GetMapping("/checkMovement/{movementTipe}/player/{nickname}/table/{idTable}")
+    @PostMapping("/checkMovement/{movementTipe}/player/{nickname}/table/{idTable}")
     public ResponseEntity<Map<String, String>>  checkMovement(@PathVariable String nickname,@PathVariable String movementTipe,@PathVariable Long idTable) {
         try {
             Map<String, String> response = new HashMap<>();
 
-            String tipocasilla = tableroService.checkMovement( nickname,movementTipe,idTable);
+            String movement = tableroService.checkMovement( nickname,movementTipe,idTable);
 
            
-                response.put("TipoCasilla ", tipocasilla);
+                response.put("Movement ", movement);
           
             return ResponseEntity.ok(response);
         } catch (Exception e) {
