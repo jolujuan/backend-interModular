@@ -69,7 +69,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5O
 
 ###
 ## getQuestionRandom with a category
-GET http://localhost:8090/api/v1/questions/category/animals  HTTP/1.1
+GET http://localhost:8090/api/v1/questions/category/animals/table/7  HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5ODY5ODIsImV4cCI6MTcwODAyMjk4Mn0.Vhy_vQWRBzFByDu4xEEtWHRdPKp4uFnMaJ877wz29R4
 
 ###

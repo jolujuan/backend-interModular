@@ -1,5 +1,6 @@
 package www.intermodular.com.appversion1.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,10 +10,11 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import www.intermodular.com.appversion1.model.db.QuestionAnswerDB;
+import www.intermodular.com.appversion1.model.db.TableroDb;
 import www.intermodular.com.appversion1.model.dto.PaginaDto;
 import www.intermodular.com.appversion1.model.dto.QuestionAnswerList;
 import www.intermodular.com.appversion1.repository.QuestionAnswerRepository;
-
+import www.intermodular.com.appversion1.repository.TableroRepository;
 import www.intermodular.com.appversion1.service.QuestionsAnswerService;
 import www.intermodular.com.appversion1.service.mapper.QuestionsAnswerMapper;
 
@@ -20,9 +22,10 @@ import www.intermodular.com.appversion1.service.mapper.QuestionsAnswerMapper;
 public class QuestionsAnswerServiceImpl implements QuestionsAnswerService {
 
     private final QuestionAnswerRepository questionAnswerRepository;
-
-    public QuestionsAnswerServiceImpl(QuestionAnswerRepository questionAnswerRepository) {
+    private final TableroRepository tableroRepository;
+    public QuestionsAnswerServiceImpl(QuestionAnswerRepository questionAnswerRepository,TableroRepository tableroRepository) {
         this.questionAnswerRepository = questionAnswerRepository;
+        this.tableroRepository=tableroRepository;
     }
 
     @Override
@@ -51,8 +54,29 @@ public class QuestionsAnswerServiceImpl implements QuestionsAnswerService {
     }
 
     @Override
-    public List<QuestionAnswerList> getRandomQuestionByCategory(String category) {
-        return QuestionsAnswerMapper.INSTANCE.questionsToQuestionAnswerList(questionAnswerRepository.findRandomQuestionByCategory(category));
+    public List<QuestionAnswerList> getRandomQuestionByCategory(String category,Long idTable) {
+        TableroDb questionsPartida = tableroRepository.findByIdTablero(idTable);
+
+        if (questionsPartida == null) {
+           return new ArrayList<>(); // Devuelve una lista vacía si no se encuentra el tablero
+        }
+    
+        String preguntasHechas = questionsPartida.getPreguntasHechas();
+        List<QuestionAnswerList> retorno;
+    
+        // Bucle para obtener una pregunta que no haya sido hecha anteriormente
+        do {
+            retorno = QuestionsAnswerMapper.INSTANCE.questionsToQuestionAnswerList(questionAnswerRepository.findRandomQuestionByCategory(category));
+        } while (preguntasHechas.contains("" + retorno.get(0).getIdPregunta()));
+    
+        // Agrega el ID de la pregunta al registro de preguntas hechas
+        preguntasHechas += " " + retorno.get(0).getIdPregunta();
+    
+        // Actualiza el campo preguntasHechas en el objeto questionsPartida en la base de datos
+        questionsPartida.setPreguntasHechas(preguntasHechas);
+        tableroRepository.save(questionsPartida);
+    
+        return retorno;
     }
     public boolean isAnswerCorrect(Long idPregunta, String resultsCorrectAnswer) {
         Optional<QuestionAnswerDB> optionalQuestionAnswer = questionAnswerRepository.findById(idPregunta);

@@ -81,12 +81,12 @@ public class QuestionsAnswerController {
 
     }
 
-    @GetMapping("/questions/category/{category}")
-    public ResponseEntity<Map<String, Object>> getRandomQuestionByCategory(@PathVariable String category) {
+    @GetMapping("/questions/category/{category}/table/{idTable}")
+    public ResponseEntity<Map<String, Object>> getRandomQuestionByCategory(@PathVariable String category,@PathVariable Long idTable) {
 
         try {
 
-            List<QuestionAnswerList> getquestion = questionsAnswerService.getRandomQuestionByCategory(category);
+            List<QuestionAnswerList> getquestion = questionsAnswerService.getRandomQuestionByCategory(category,idTable);
             Map<String, Object> response = new HashMap<>();
             String combinedAnswers = getquestion.get(0).getResultsCorrectAnswer() + ", "
                     + getquestion.get(0).getResultsIncorrectAnswers();

@@ -426,6 +426,7 @@ public class TableroServiceImpl implements TableroService {
                     case "LLEGADA":// GANA EL JUGADOR
 
                         partidaActual.setGanador(idJugador);
+                        partidaActual.setEstado(EstadoTablero.FINALIZADO);
                         tableroRepository.save(partidaActual);
                         return "WINNER_" + nickname;
 
@@ -472,6 +473,7 @@ public class TableroServiceImpl implements TableroService {
                     case "LLEGADA":// GANA EL JUGADOR
 
                         partidaActual.setGanador(idJugador);
+                        partidaActual.setEstado(EstadoTablero.FINALIZADO);
                         tableroRepository.save(partidaActual);
                         return "WINNER_" + nickname;
 
@@ -525,6 +527,7 @@ public class TableroServiceImpl implements TableroService {
                     case "LLEGADA":// GANA EL JUGADOR
 
                         partidaActual.setGanador(idJugador);
+                        partidaActual.setEstado(EstadoTablero.FINALIZADO);
                         tableroRepository.save(partidaActual);
                         return "WINNER_" + nickname;
 
@@ -576,6 +579,7 @@ public class TableroServiceImpl implements TableroService {
                     case "LLEGADA":// GANA EL JUGADOR
 
                         partidaActual.setGanador(idJugador);
+                        partidaActual.setEstado(EstadoTablero.FINALIZADO);
                         tableroRepository.save(partidaActual);
                         return "WINNER_" + nickname;
 

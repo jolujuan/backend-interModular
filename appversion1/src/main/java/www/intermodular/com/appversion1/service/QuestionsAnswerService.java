@@ -14,6 +14,6 @@ public interface QuestionsAnswerService {
     public String getAnswerCorect(Long idPregunta);
     public PaginaDto<QuestionAnswerList> findAllPageQuestionAnswerList(Pageable pageable);
     public List<QuestionAnswerList> findAllQuestionsAnswerCategoria(String results_category,Sort sort);
-    public List<QuestionAnswerList> getRandomQuestionByCategory(String category);
+    public List<QuestionAnswerList> getRandomQuestionByCategory(String category, Long idTable);
     public boolean isAnswerCorrect(Long idPregunta,String resultsCorrectAnswer);
 }
