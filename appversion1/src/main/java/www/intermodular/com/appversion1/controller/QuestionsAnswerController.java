@@ -106,7 +106,9 @@ public class QuestionsAnswerController {
             response.put("answer4",shuffledAnswers.get(3));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
      @GetMapping("/questions/answer")

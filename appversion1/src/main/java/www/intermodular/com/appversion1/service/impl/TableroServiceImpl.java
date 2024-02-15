@@ -432,7 +432,7 @@ public class TableroServiceImpl implements TableroService {
 
                 }
                 if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
-                    partidaActual.setTurnoJugador(partidaActual.getCasillaJugador2().getId());
+                    partidaActual.setTurnoJugador(partidaActual.getJugador2().getIdUsuario());
                     tableroRepository.save(partidaActual);
                     if (movementTipe.equals("NORMAL")) {
                         return "NORMAL_DONE_NEXT_TURN";
