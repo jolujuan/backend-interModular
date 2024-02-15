@@ -181,10 +181,10 @@ public class TableroServiceImpl implements TableroService {
 
         TableroDb tablero = tableroRepository.findByIdTablero(idTablero);
 
-        String player1 = tablero.getJugador1() != null ? tablero.getJugador1().getNombre() : "Jugador 1";
-        String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "Jugador 2";
-        String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "Jugador 3";
-        String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "Jugador 4";
+        String player1 = tablero.getJugador1() != null ? tablero.getJugador1().getNombre() : "Jugador-1";
+        String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "Jugador-2";
+        String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "Jugador-3";
+        String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "Jugador-4";
 
         return "IdTablero: " + tablero.getIdTablero()
                 + " Player_1 " + player1
