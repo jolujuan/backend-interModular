@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.intermodular.com.appversion1.model.db.CasillaDb;
+import www.intermodular.com.appversion1.model.db.CasillaTipoDb;
 import www.intermodular.com.appversion1.model.db.JugadorDb;
 import www.intermodular.com.appversion1.model.db.TableroDb;
 import www.intermodular.com.appversion1.model.dto.CasillaList;
@@ -292,11 +293,12 @@ public class TableroServiceImpl implements TableroService {
         Long casilla_actual = 0L;
         if (tableActual.getJugador1().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador1().getId();
-
+            // para guardar a que tipo casilla nos movemos
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
+            CasillaTipo casillatipo;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
             if (nuevaCasilla==null) {
-                return "1 ERROR_MOVE_INVALID";
+                return " ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador1(nuevaCasilla);
 
@@ -306,9 +308,12 @@ public class TableroServiceImpl implements TableroService {
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
             if (nuevaCasilla==null) {
-                return "1 ERROR_MOVE_INVALID";
+                return "ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador2(nuevaCasilla);
+
+            //devolver el tipo de casilla a la que me muevo
+            CasillaTipoDb Tipo= nuevaCasilla.getTipoCasilla();
             jugadorActual = "2";
         } else if (tableActual.getJugador3().getIdUsuario().equals(idJugador)) {
             casilla_actual = tableActual.getCasillaJugador3().getId();
@@ -316,7 +321,7 @@ public class TableroServiceImpl implements TableroService {
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
             if (nuevaCasilla==null) {
-                return "1 ERROR_MOVE_INVALID";
+                return "ERROR_MOVE_INVALID";
             }
             tableActual.setCasillaJugador3(nuevaCasilla);
             jugadorActual = "3";
@@ -326,13 +331,14 @@ public class TableroServiceImpl implements TableroService {
             Long nuevoIdCasilla = casilla_actual + numBoxMove;
             CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
             if (nuevaCasilla==null) {
-                return "1 ERROR_MOVE_INVALID";
+                return "ERROR_MOVE_INVALID";
             }
-            tableActual.setCasillaJugador1(nuevaCasilla);
+            tableActual.setCasillaJugador4(nuevaCasilla);
             jugadorActual = "4";
         } else
             return "PLAYER_NOT_FOUND";
 
+            tableroRepository.save(tableActual);
         return "";
     }
 

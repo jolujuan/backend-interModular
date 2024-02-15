@@ -98,10 +98,10 @@ public class TableroController {
             String idTableroFind = tableroService.getTablerostatus(idTablero);
             if (idTableroFind.split(" ").length>4) {
                 response.put("idTablero ", idTableroFind.split(" ")[1]);
-            response.put("Player 1 ", idTableroFind.split(" ")[3]);
-            response.put("Player 2 ", idTableroFind.split(" ")[5]);
-            response.put("Player 3 ", idTableroFind.split(" ")[7]);
-            response.put("Player 4 ", idTableroFind.split(" ")[9]);
+            response.put("Player1 ", idTableroFind.split(" ")[3]);
+            response.put("Player2 ", idTableroFind.split(" ")[5]);
+            response.put("Player3 ", idTableroFind.split(" ")[7]);
+            response.put("Player4 ", idTableroFind.split(" ")[9]);
             }else{
                 response.put("ERROR ", "SOME_ERROR_IN_TABLERO");
             }
