@@ -104,7 +104,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5M
 
 ### doMovement
 
-POST  http://localhost:8090/api/v1/movePlayer/prueba/number/3
+POST  http://localhost:8090/api/v1/movePlayer/prueba/number/3/table/7
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDc5Mjc4NjgsImV4cCI6MTcwNzk2Mzg2OH0.TNlsC18tWgyr071TiYJ1Tnn8Qi3jrQ6DatLH59tK238
 
 ###

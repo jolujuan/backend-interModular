@@ -180,10 +180,10 @@ public class TableroServiceImpl implements TableroService {
 
         TableroDb tablero = tableroRepository.findByIdTablero(idTablero);
 
-        String player1 = tablero.getJugador1() != null ? tablero.getJugador1().getNombre() : "esperando";
-        String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "essperando";
-        String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "esperando";
-        String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "esperando";
+        String player1 = tablero.getJugador1() != null ? tablero.getJugador1().getNombre() : "Esperando";
+        String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "Esperando";
+        String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "Esperando";
+        String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "Esperando";
 
         return "IdTablero: " + tablero.getIdTablero()
                 + " Player_1 " + player1
@@ -261,13 +261,14 @@ public class TableroServiceImpl implements TableroService {
                 } else
                     partidaActual.setTurnoJugador(partidaActual.getJugador4().getIdUsuario());// cambiar el turno al
                                                                                               // siguiente
-            }else  if (jugadorActual.equals("4")) {
-                
-                partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());//cambiar el turno al siguiente de vuelta al ciclo
-            } 
+            } else if (jugadorActual.equals("4")) {
 
+                partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());// cambiar el turno al
+                                                                                          // siguiente de vuelta al
+                                                                                          // ciclo
+            }
 
-        tableroRepository.save(partidaActual);
+            tableroRepository.save(partidaActual);
             return "LOSE_TURN_NUMBER_" + numrandom;
         }
 
@@ -275,6 +276,64 @@ public class TableroServiceImpl implements TableroService {
         String tirarDado = String.valueOf(numrandom);
 
         return tirarDado;
+    }
+
+    @Override
+    public String movePlayer(String nickname, Long numBoxMove, Long idTable) {
+        Long idJugador = getIdUserJugador(nickname); // id del que mueve ficha
+        // tablero dnd se mueve la app
+        TableroDb tableActual = tableroRepository.findByIdTablero(idTable);
+        if (tableActual == null) {
+            return "TABLE_NO_VALID";
+        }
+
+        // ver que jugador realiza la tirada
+        String jugadorActual = "";
+        Long casilla_actual = 0L;
+        if (tableActual.getJugador1().getIdUsuario().equals(idJugador)) {
+            casilla_actual = tableActual.getCasillaJugador1().getId();
+
+            Long nuevoIdCasilla = casilla_actual + numBoxMove;
+            CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
+            if (nuevaCasilla==null) {
+                return "1 ERROR_MOVE_INVALID";
+            }
+            tableActual.setCasillaJugador1(nuevaCasilla);
+
+            jugadorActual = "1";
+        } else if (tableActual.getJugador2().getIdUsuario().equals(idJugador)) {
+            casilla_actual = tableActual.getCasillaJugador2().getId();
+            Long nuevoIdCasilla = casilla_actual + numBoxMove;
+            CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
+            if (nuevaCasilla==null) {
+                return "1 ERROR_MOVE_INVALID";
+            }
+            tableActual.setCasillaJugador2(nuevaCasilla);
+            jugadorActual = "2";
+        } else if (tableActual.getJugador3().getIdUsuario().equals(idJugador)) {
+            casilla_actual = tableActual.getCasillaJugador3().getId();
+
+            Long nuevoIdCasilla = casilla_actual + numBoxMove;
+            CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
+            if (nuevaCasilla==null) {
+                return "1 ERROR_MOVE_INVALID";
+            }
+            tableActual.setCasillaJugador3(nuevaCasilla);
+            jugadorActual = "3";
+        } else if (tableActual.getJugador4().getIdUsuario().equals(idJugador)) {
+            casilla_actual = tableActual.getCasillaJugador4().getId();
+
+            Long nuevoIdCasilla = casilla_actual + numBoxMove;
+            CasillaDb nuevaCasilla = casillaRepository.findById(nuevoIdCasilla).orElse(null);
+            if (nuevaCasilla==null) {
+                return "1 ERROR_MOVE_INVALID";
+            }
+            tableActual.setCasillaJugador1(nuevaCasilla);
+            jugadorActual = "4";
+        } else
+            return "PLAYER_NOT_FOUND";
+
+        return "";
     }
 
 }
