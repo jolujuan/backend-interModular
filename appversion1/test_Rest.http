@@ -110,7 +110,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwM
 
 ### checkMovement
 
-POST http://localhost:8090/api/v1/checkMovement/BONIFICACION/player/joserra/table/1  HTTP/1.1
+POST http://localhost:8090/api/v1/checkMovement/LLEGADA/player/prueba/table/1  HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
 
 ###
