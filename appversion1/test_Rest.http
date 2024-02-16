@@ -65,52 +65,52 @@ Content-Type: application/json
 ##getAllPorteros con JWGT
 
 GET  http://localhost:8090/api/v1/questions HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ###
 ## getQuestionRandom with a category
 GET http://localhost:8090/api/v1/questions/category/animals/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ###
 ## Send answer Question
-GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanyz&idPregunta=7 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanys&idPregunta=7&idTable=7&nickname=prueba HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 ### getStartTablero
 POST http://localhost:8090/api/v1/createBoard/prueba  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ###
 
 ### addPlayer
 POST http://localhost:8090/api/v1/addPlayer/name/joserra/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ### getTableroStatus
 
 
 GET  http://localhost:8090/api/v1/getStatusBoard/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ### getStartGame
 
 POST http://localhost:8090/api/v1/startGame/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 ###
 
 ### getNumRandom1_4
 GET  http://localhost:8090/api/v1/rolldice/prueba/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 
 ### doMovement
 
 POST  http://localhost:8090/api/v1/movePlayer/joserra/number/2/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ### checkMovement
 
 POST http://localhost:8090/api/v1/checkMovement/LLEGADA/player/prueba/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwMTY0MzEsImV4cCI6MTcwODA1MjQzMX0.uHJELcBalbR1KnOaaTQpCLcB3iSTp1KdlvUlmuSrsyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
 
 ###

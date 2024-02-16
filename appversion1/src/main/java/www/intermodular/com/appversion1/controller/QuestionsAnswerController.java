@@ -114,13 +114,15 @@ public class QuestionsAnswerController {
      @GetMapping("/questions/answer")
     public ResponseEntity<Map<String, Object>> answerQuestion(
             @RequestParam("resultsCorrectAnswer") String resultsCorrectAnswer,
-            @RequestParam("idPregunta") Long idPregunta) {
+            @RequestParam("idPregunta") Long idPregunta,@RequestParam Long idTable, @RequestParam String nickname) {
                 try {
-                    boolean isCorrect = questionsAnswerService.isAnswerCorrect(idPregunta, resultsCorrectAnswer);
+                    boolean isCorrect = questionsAnswerService.isAnswerCorrect(idPregunta, resultsCorrectAnswer,idTable, nickname);
                     String respuestaCorrecta = questionsAnswerService.getAnswerCorect(idPregunta);
                 
                  Map<String, Object> response = new HashMap<>();
-                 response.put("Result", isCorrect ? "La respuesta es correcta." : "La respuesta es incorrecta."+"La correcta es "+respuestaCorrecta);
+                 response.put("Result", isCorrect ? "TRUE" : "FALSE ");
+                 response.put("Repeat Turn", isCorrect? "TRUE" : "FALSE");
+                 response.put("CorrectAnswer" ,respuestaCorrecta);
                  return ResponseEntity.ok(response);
                 } catch (Exception e) {
                     Map<String, Object> errorResponse = new HashMap<>();
