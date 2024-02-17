@@ -120,8 +120,8 @@ public class QuestionsAnswerController {
                     String respuestaCorrecta = questionsAnswerService.getAnswerCorect(idPregunta);
                 
                  Map<String, Object> response = new HashMap<>();
-                 response.put("Result", isCorrect ? "TRUE" : "FALSE ");
-                 response.put("Repeat Turn", isCorrect? "TRUE" : "FALSE");
+                 response.put("Result", isCorrect ? "true" : "false");
+                 response.put("Repeat Turn", isCorrect? "true" : "false");
                  response.put("CorrectAnswer" ,respuestaCorrecta);
                  return ResponseEntity.ok(response);
                 } catch (Exception e) {

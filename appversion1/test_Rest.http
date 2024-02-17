@@ -55,8 +55,8 @@ POST  http://localhost:8090/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "nickname": "prueba",
-    "password":"NoTeLoDigo@1"
+    "nickname": "joselu",
+    "password":"joselu"
     
 }
 
@@ -70,12 +70,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwO
 ###
 ## getQuestionRandom with a category
 GET http://localhost:8090/api/v1/questions/category/animals/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxMjAzNTksImV4cCI6MTcwODE1NjM1OX0.BPqjQbHrvffQeaLX_nsdsvGPYox0KvnMOfAz649_oRU
 
 ###
 ## Send answer Question
-GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Albanys&idPregunta=7&idTable=7&nickname=prueba HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
+GET  http://localhost:8090/api/v1/questions/answer?resultsCorrectAnswer=Negro&idPregunta=32&idTable=1&nickname=joselu HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxMjAzNTksImV4cCI6MTcwODE1NjM1OX0.BPqjQbHrvffQeaLX_nsdsvGPYox0KvnMOfAz649_oRU
 ### getStartTablero
 POST http://localhost:8090/api/v1/createBoard/prueba  HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
@@ -105,12 +105,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwO
 
 ### doMovement
 
-POST  http://localhost:8090/api/v1/movePlayer/joserra/number/2/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
+POST  http://localhost:8090/api/v1/movePlayer/marcos/number/2/table/1  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxMzY5NzMsImV4cCI6MTcwODE3Mjk3M30.PUGl6t7-zvbsf5vNuDNfTSO03ZJXnN1ob4DVqEIGKn4
 
 ### checkMovement
 
-POST http://localhost:8090/api/v1/checkMovement/LLEGADA/player/prueba/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEiLCJpYXQiOjE3MDgwODEzOTMsImV4cCI6MTcwODExNzM5M30.A8pSYyjrXrvtSTsaLS6dEF4Io0KTxGcx0U6exZoLT-8
+POST http://localhost:8090/api/v1/checkMovement/NORMAL/player/joselu/table/1  HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxMzU0ODIsImV4cCI6MTcwODE3MTQ4Mn0.6gyTYaQlgB6fFt65YApErTItawKLhWnjjARK2LJWgAo
 
 ###

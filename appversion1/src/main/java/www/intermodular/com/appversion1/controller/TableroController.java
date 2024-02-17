@@ -58,7 +58,7 @@ public class TableroController {
             String tiradaDado = tableroService.getRollDice( nickname,idTablero);
 
            
-                response.put("RollDice ", tiradaDado);
+                response.put("RollDice", tiradaDado);
           
             return ResponseEntity.ok(response);
         } catch (Exception e) {

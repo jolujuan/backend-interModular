@@ -224,7 +224,18 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
 
 	-- FOR HISTORY ****/
 
-    ('boolean', 'easy', 'history', 'Adolf Hitler fue un soldado alemán en la Primera Guerra Mundial.', 'True', 'False'),
+('multiple', 'easy', 'history', '¿Cómo se llama a un bebé murciélago?', 'Cachorro', 'Cub, Polluelo, Cría'),
+    ('multiple', 'easy', 'history', '¿De qué color es la hembra del mirlo?', 'Marrón', 'Negro, Blanco, Amarillo'),
+    ('multiple', 'easy', 'history', '¿Cuál es el nombre colectivo para un grupo de cuervos?', 'Asesinato', 'Manada, Bandada, Rebaño'),
+    ('multiple', 'easy', 'history', '¿Cuántos dientes tiene un conejo adulto?', '28', '30, 26, 24'),
+    ('multiple', 'easy', 'history', '¿Cuál es el animal terrestre más rápido?', 'Guepardo', 'León, Gacela Thomson, Antílope Pronghorn'),
+    ('multiple', 'easy', 'history', '¿A qué clase de animales pertenecen las salamandras?', 'Anfibio', 'Pez, Reptiles, Mamíferos'),
+    ('multiple', 'easy', 'history', '¿Cuál es el verdadero nombre de Grumpy Cat?', 'Salsa Tártara', 'Salsa, Minnie, Brócoli'),
+    ('multiple', 'easy', 'history', 'Por definición, ¿dónde vive un animal abisopelágico?', 'En el fondo del océano', 'En el desierto, En la cima de una montaña, Dentro de un árbol'),
+    ('multiple', 'easy', 'history', '¿Cómo se llama la morada de un conejo?', 'Madriguera', 'Nido, Cueva, Drey'),
+    ('multiple', 'easy', 'history', '¿Cuál es el nombre científico de los humanos modernos?', 'Homo Sapiens', 'Homo Ergaster, Homo Erectus, Homo Neanderthalensis');
+
+    /* ('boolean', 'easy', 'history', 'Adolf Hitler fue un soldado alemán en la Primera Guerra Mundial.', 'True', 'False'),
     ('boolean', 'easy', 'history', 'Estados Unidos de América fue el primer país en lanzar un hombre al espacio.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'La Guerra Fría terminó con la muerte de Joseph Stalin.', 'False', 'True'),
     ('boolean', 'easy', 'history', 'Estados Unidos fue miembro de la Liga de Naciones.', 'False', 'True'),
@@ -233,7 +244,7 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
     ('boolean', 'easy', 'history', '¿Kublai Khan es el nieto de Genghis Khan?', 'True', 'False'),
     ('boolean', 'easy', 'history', 'El Departamento de Seguridad Nacional de Estados Unidos se formó en respuesta a los ataques del 11 de septiembre.', 'True', 'False'),
     ('boolean', 'easy', 'history', 'Adolf Hitler fue juzgado en los juicios de Núremberg.', 'False', 'True'),
-    ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True');
+    ('boolean', 'easy', 'history', 'El presidente de Estados Unidos, John F. Kennedy, fue asesinado durante su caravana presidencial en Atlanta, Georgia, el 22 de noviembre de 1963.', 'False', 'True'); */
 
 -- ------------------------
 --
