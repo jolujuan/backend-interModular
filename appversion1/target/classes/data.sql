@@ -224,16 +224,16 @@ INSERT INTO `questions_answers` ( resultsType, resultsDifficulty, resultsCategor
 
 	-- FOR HISTORY ****/
 
-('multiple', 'easy', 'history', '¿Cómo se llama a un bebé murciélago?', 'Cachorro', 'Cub, Polluelo, Cría'),
-    ('multiple', 'easy', 'history', '¿De qué color es la hembra del mirlo?', 'Marrón', 'Negro, Blanco, Amarillo'),
-    ('multiple', 'easy', 'history', '¿Cuál es el nombre colectivo para un grupo de cuervos?', 'Asesinato', 'Manada, Bandada, Rebaño'),
-    ('multiple', 'easy', 'history', '¿Cuántos dientes tiene un conejo adulto?', '28', '30, 26, 24'),
-    ('multiple', 'easy', 'history', '¿Cuál es el animal terrestre más rápido?', 'Guepardo', 'León, Gacela Thomson, Antílope Pronghorn'),
-    ('multiple', 'easy', 'history', '¿A qué clase de animales pertenecen las salamandras?', 'Anfibio', 'Pez, Reptiles, Mamíferos'),
-    ('multiple', 'easy', 'history', '¿Cuál es el verdadero nombre de Grumpy Cat?', 'Salsa Tártara', 'Salsa, Minnie, Brócoli'),
-    ('multiple', 'easy', 'history', 'Por definición, ¿dónde vive un animal abisopelágico?', 'En el fondo del océano', 'En el desierto, En la cima de una montaña, Dentro de un árbol'),
-    ('multiple', 'easy', 'history', '¿Cómo se llama la morada de un conejo?', 'Madriguera', 'Nido, Cueva, Drey'),
-    ('multiple', 'easy', 'history', '¿Cuál es el nombre científico de los humanos modernos?', 'Homo Sapiens', 'Homo Ergaster, Homo Erectus, Homo Neanderthalensis');
+('multiple', 'easy', 'history', '¿Quién fue el primer emperador romano?', 'Augusto', 'Julio César, Marco Antonio, Nerón'),
+       ('multiple', 'easy', 'history', '¿Cuál fue el primer imperio en la historia de la humanidad?', 'Imperio Acadio', 'Imperio Persa, Imperio Romano, Imperio Mongol'),
+       ('multiple', 'easy', 'history', '¿Quién fue el líder de la Revolución Rusa en 1917?', 'Vladimir Lenin', 'Joseph Stalin, Leon Trotsky, Mikhail Gorbachev'),
+       ('multiple', 'easy', 'history', '¿Cuál fue la primera guerra mundial conocida en la historia?', 'Guerra del Peloponeso', 'Guerra de Troya, Guerra de los Cien Años, Guerra de los Treinta Años'),
+       ('multiple', 'easy', 'history', '¿Cuál era la capital del Imperio Inca?', 'Cuzco', 'Machu Picchu, Quito, Lima'),
+       ('multiple', 'easy', 'history', '¿Qué evento marcó el inicio de la Revolución Francesa?', 'La Toma de la Bastilla', 'La Revuelta de los Campesinos, La Marcha de las Mujeres a Versalles, La Decapitación de Luis XVI'),
+       ('multiple', 'easy', 'history', '¿Quién fue el líder de la Revolución Cubana?', 'Fidel Castro', 'Che Guevara, Raúl Castro, Fulgencio Batista'),
+       ('multiple', 'easy', 'history', '¿Cuál fue la primera civilización en la historia de la humanidad?', 'Civilización Sumeria', 'Civilización Egipcia, Civilización China, Civilización Harappa'),
+       ('multiple', 'easy', 'history', '¿Quién fue el primer presidente de los Estados Unidos?', 'George Washington', 'Thomas Jefferson, Abraham Lincoln, John Adams'),
+       ('multiple', 'easy', 'history', '¿En qué año terminó la Segunda Guerra Mundial?', '1945', '1943, 1944, 1946');
 
     /* ('boolean', 'easy', 'history', 'Adolf Hitler fue un soldado alemán en la Primera Guerra Mundial.', 'True', 'False'),
     ('boolean', 'easy', 'history', 'Estados Unidos de América fue el primer país en lanzar un hombre al espacio.', 'False', 'True'),
@@ -263,19 +263,20 @@ INSERT INTO casillaTipo (tipocasilla) VALUES
 -- ------------------------
 -- inserts de casillas //'SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'
 -- ------------------------
+
 INSERT INTO casilla (numero, tipoCasilla) VALUES 
     (1, 'SALIDA'),
     (2, 'NORMAL'),
     (3, 'BONIFICACION'),
     (4, 'NORMAL'),
-    (5, 'BONIFICACION'),
-    (6, 'NORMAL'),
+    (5, 'NORMAL'),
+    (6, 'BONIFICACION'),
     (7, 'RETROCESO'),
     (8, 'NORMAL'),
     (9, 'BONIFICACION'),
     (10, 'NORMAL'),
-    (11, 'BONIFICACION'),
-    (12, 'NORMAL'),
+    (11, 'NORMAL'),
+    (12, 'BONIFICACION'),
     (13, 'RETROCESO'),
     (14, 'NORMAL'),
     (15, 'BONIFICACION'),

@@ -78,7 +78,7 @@ public class TableroController {
             String tipocasilla = tableroService.movePlayer( nickname,numBoxMove,idTable);
 
            
-                response.put("TipoCasilla ", tipocasilla);
+                response.put("TipoCasilla", tipocasilla);
           
             return ResponseEntity.ok(response);
         } catch (Exception e) {

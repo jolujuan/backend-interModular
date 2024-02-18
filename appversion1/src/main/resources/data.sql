@@ -263,19 +263,20 @@ INSERT INTO casillaTipo (tipocasilla) VALUES
 -- ------------------------
 -- inserts de casillas //'SALIDA', 'BONIFICACION', 'PENALIZACION', 'RETROCESO', 'LLEGADA', 'NORMAL'
 -- ------------------------
+
 INSERT INTO casilla (numero, tipoCasilla) VALUES 
     (1, 'SALIDA'),
     (2, 'NORMAL'),
     (3, 'BONIFICACION'),
     (4, 'NORMAL'),
-    (5, 'BONIFICACION'),
-    (6, 'NORMAL'),
+    (5, 'NORMAL'),
+    (6, 'BONIFICACION'),
     (7, 'RETROCESO'),
     (8, 'NORMAL'),
     (9, 'BONIFICACION'),
     (10, 'NORMAL'),
-    (11, 'BONIFICACION'),
-    (12, 'NORMAL'),
+    (11, 'NORMAL'),
+    (12, 'BONIFICACION'),
     (13, 'RETROCESO'),
     (14, 'NORMAL'),
     (15, 'BONIFICACION'),
