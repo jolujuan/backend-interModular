@@ -185,12 +185,25 @@ public class TableroServiceImpl implements TableroService {
         String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "Jugador-2";
         String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "Jugador-3";
         String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "Jugador-4";
-
+        String turnoDe="";
+        if (tablero.getJugador1().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe= tablero.getJugador1().getNombre();
+        }
+        else  if (tablero.getJugador2().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe= tablero.getJugador2().getNombre();
+        }
+        else  if (tablero.getJugador3().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe= tablero.getJugador3().getNombre();
+        }
+        else  if (tablero.getJugador4().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe= tablero.getJugador4().getNombre();
+        }
         return "IdTablero: " + tablero.getIdTablero()
                 + " Player_1 " + player1
                 + " Player_2 " + player2
                 + " Player_3 " + player3
-                + " Player_4 " + player4;
+                + " Player_4 " + player4
+                + " TurnoJugador "+turnoDe;
     }
 
     @Override
@@ -354,7 +367,6 @@ public class TableroServiceImpl implements TableroService {
         tableroRepository.save(tableActual);
         return casillaTipo;
     }
-    
 
     @Override
     public String checkMovement(String nickname, String movementTipe, Long idTable) {
@@ -463,7 +475,7 @@ public class TableroServiceImpl implements TableroService {
                         break;
 
                     case "NORMAL":// NO PASA NADA SE PASA EL TURNO
-                            System.out.println("ENTRA EN HOLA");
+                        System.out.println("ENTRA EN HOLA");
                         break;
                     case "BONIFICACION": // CASILLA PREGUNTA LE TOCARA AL JUGADOR RESPONDER UNA PREGUNTA Y CONSEGUIR
                                          // OTRA TIRADA O NO SE PASA EL TURNO
@@ -479,9 +491,15 @@ public class TableroServiceImpl implements TableroService {
 
                 }
                 if ("LLEGADA" != movementTipe || "BONIFICACION" != movementTipe) {
-                    JugadorDb jugador3= jugadorRepository.findByIdUsuario(casilla_actual);
+                    JugadorDb jugador3 = jugadorRepository.findByIdUsuario(casilla_actual);
 
-                    if ( partidaActual.getJugador3()==null || partidaActual.getJugador3().getIdUsuario() == null ) {// no hay mas jugadores entonces cambia de
+                    if (partidaActual.getJugador3() == null || partidaActual.getJugador3().getIdUsuario() == null) {// no
+                                                                                                                    // hay
+                                                                                                                    // mas
+                                                                                                                    // jugadores
+                                                                                                                    // entonces
+                                                                                                                    // cambia
+                                                                                                                    // de
                         // turno al primero
                         partidaActual.setTurnoJugador(partidaActual.getJugador1().getIdUsuario());
                     } else

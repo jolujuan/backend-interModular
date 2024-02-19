@@ -111,6 +111,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxM
 ### checkMovement
 
 POST http://localhost:8090/api/v1/checkMovement/NORMAL/player/joselu/table/1  HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgxMzU0ODIsImV4cCI6MTcwODE3MTQ4Mn0.6gyTYaQlgB6fFt65YApErTItawKLhWnjjARK2LJWgAo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlbHUiLCJpYXQiOjE3MDgzNjAyNDUsImV4cCI6MTcwODM5NjI0NX0.SxVZaXVUGmUMUE9gqe-xgsGA-93sS7O6tdNyqC16xME
 
 ###
