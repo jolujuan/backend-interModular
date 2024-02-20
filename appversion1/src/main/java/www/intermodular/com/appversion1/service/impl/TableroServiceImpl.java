@@ -185,25 +185,33 @@ public class TableroServiceImpl implements TableroService {
         String player2 = tablero.getJugador2() != null ? tablero.getJugador2().getNombre() : "Jugador-2";
         String player3 = tablero.getJugador3() != null ? tablero.getJugador3().getNombre() : "Jugador-3";
         String player4 = tablero.getJugador4() != null ? tablero.getJugador4().getNombre() : "Jugador-4";
-        String turnoDe="";
+        String turnoDe = "";
+
+        int casillaPlayer1 = tablero.getCasillaJugador1() != null ? tablero.getCasillaJugador1().getNumero() : 1; 
+        int casillaPlayer2 = tablero.getCasillaJugador2() != null ? tablero.getCasillaJugador2().getNumero() : 1;
+        int casillaPlayer3 = tablero.getCasillaJugador3() != null ? tablero.getCasillaJugador3().getNumero() : 1;
+        int casillaPlayer4 = tablero.getCasillaJugador4() != null ? tablero.getCasillaJugador4().getNumero() : 1;
+
         if (tablero.getJugador1().getIdUsuario().equals(tablero.getTurnoJugador())) {
-            turnoDe= tablero.getJugador1().getNombre();
-        }
-        else  if (tablero.getJugador2().getIdUsuario().equals(tablero.getTurnoJugador())) {
-            turnoDe= tablero.getJugador2().getNombre();
-        }
-        else  if (tablero.getJugador3().getIdUsuario().equals(tablero.getTurnoJugador())) {
-            turnoDe= tablero.getJugador3().getNombre();
-        }
-        else  if (tablero.getJugador4().getIdUsuario().equals(tablero.getTurnoJugador())) {
-            turnoDe= tablero.getJugador4().getNombre();
+            turnoDe = tablero.getJugador1().getNombre();
+        } else if (tablero.getJugador2().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe = tablero.getJugador2().getNombre();
+        } else if (tablero.getJugador3().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe = tablero.getJugador3().getNombre();
+        } else if (tablero.getJugador4().getIdUsuario().equals(tablero.getTurnoJugador())) {
+            turnoDe = tablero.getJugador4().getNombre();
         }
         return "IdTablero: " + tablero.getIdTablero()
                 + " Player_1 " + player1
                 + " Player_2 " + player2
                 + " Player_3 " + player3
                 + " Player_4 " + player4
-                + " TurnoJugador "+turnoDe;
+                + " TurnoJugador " + turnoDe
+                + " casillaPlayer1 " + casillaPlayer1
+                + " casillaPlayer2 " + casillaPlayer2
+                + " casillaPlayer3 " + casillaPlayer3
+                + " casillaPlayer4 " + casillaPlayer4;
+
     }
 
     @Override

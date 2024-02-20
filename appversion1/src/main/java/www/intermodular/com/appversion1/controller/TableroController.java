@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RestController
 @RequestMapping("/api/v1")
 public class TableroController {
@@ -27,111 +26,103 @@ public class TableroController {
         this.tableroService = tableroService;
     }
 
-
-    //StartGame
+    // StartGame
     @PostMapping("/startGame/{idTablero}")
-    public ResponseEntity<Map<String, String>>  startGame(@PathVariable Long idTablero) {
+    public ResponseEntity<Map<String, String>> startGame(@PathVariable Long idTablero) {
         try {
             Map<String, String> response = new HashMap<>();
-            String idTableroFind = tableroService.getStartGame( idTablero);
-            if (idTableroFind.split(" ").length>0) {
+            String idTableroFind = tableroService.getStartGame(idTablero);
+            if (idTableroFind.split(" ").length > 0) {
                 response.put("idTablero ", idTableroFind.split(" ")[1]);
                 response.put("State_Game", idTableroFind.split(" ")[3]);
-            }else{
+            } else {
                 response.put("ERROR ", "GAME_CANT_START");
             }
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-            
         }
     }
-    //Rolldice tirar el dado  y comprobar si la tirada es valida
+    // Rolldice tirar el dado y comprobar si la tirada es valida
 
     @GetMapping("/rolldice/{nickname}/table/{idTablero}")
-    public ResponseEntity<Map<String, String>>  rolldice(@PathVariable String nickname,@PathVariable Long idTablero) {
+    public ResponseEntity<Map<String, String>> rolldice(@PathVariable String nickname, @PathVariable Long idTablero) {
         try {
             Map<String, String> response = new HashMap<>();
 
-            String tiradaDado = tableroService.getRollDice( nickname,idTablero);
+            String tiradaDado = tableroService.getRollDice(nickname, idTablero);
 
-           
-                response.put("RollDice", tiradaDado);
-          
+            response.put("RollDice", tiradaDado);
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-            
         }
     }
-    
 
     @PostMapping("/movePlayer/{nickname}/number/{numBoxMove}/table/{idTable}")
-    public ResponseEntity<Map<String, String>>  movePlayer(@PathVariable String nickname,@PathVariable Long numBoxMove,@PathVariable Long idTable) {
+    public ResponseEntity<Map<String, String>> movePlayer(@PathVariable String nickname, @PathVariable Long numBoxMove,
+            @PathVariable Long idTable) {
         try {
             Map<String, String> response = new HashMap<>();
 
-            String tipocasilla = tableroService.movePlayer( nickname,numBoxMove,idTable);
+            String tipocasilla = tableroService.movePlayer(nickname, numBoxMove, idTable);
 
-           
-                response.put("TipoCasilla", tipocasilla);
-          
+            response.put("TipoCasilla", tipocasilla);
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-            
         }
     }
-    
-    
+
     @PostMapping("/checkMovement/{movementTipe}/player/{nickname}/table/{idTable}")
-    public ResponseEntity<Map<String, String>>  checkMovement(@PathVariable String nickname,@PathVariable String movementTipe,@PathVariable Long idTable) {
+    public ResponseEntity<Map<String, String>> checkMovement(@PathVariable String nickname,
+            @PathVariable String movementTipe, @PathVariable Long idTable) {
         try {
             Map<String, String> response = new HashMap<>();
 
-            String movement = tableroService.checkMovement( nickname,movementTipe,idTable);
+            String movement = tableroService.checkMovement(nickname, movementTipe, idTable);
 
-           
-                response.put("Movement ", movement);
-          
+            response.put("Movement ", movement);
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-            
         }
     }
-    
+
     @GetMapping("/getStatusBoard/{idTablero}")
-    public ResponseEntity<Map<String, String>>  getStatusBoard(@PathVariable Long idTablero) {
+    public ResponseEntity<Map<String, String>> getStatusBoard(@PathVariable Long idTablero) {
         try {
             Map<String, String> response = new HashMap<>();
             String idTableroFind = tableroService.getTablerostatus(idTablero);
-            if (idTableroFind.split(" ").length>4) {
+            if (idTableroFind.split(" ").length > 4) {
                 response.put("idTableroj", idTableroFind.split(" ")[1]);
-            response.put("Player_1", idTableroFind.split(" ")[3]);
-            response.put("Player_2", idTableroFind.split(" ")[5]);
-            response.put("Player_3", idTableroFind.split(" ")[7]);
-            response.put("Player_4", idTableroFind.split(" ")[9]);
-            }else{
+                response.put("Player_1", idTableroFind.split(" ")[3]);
+                response.put("Player_2", idTableroFind.split(" ")[5]);
+                response.put("Player_3", idTableroFind.split(" ")[7]);
+                response.put("Player_4", idTableroFind.split(" ")[9]);
+                response.put("TurnoJugador", idTableroFind.split(" ")[11]);
+                response.put("casillaPlayer1", idTableroFind.split(" ")[13]);
+                response.put("casillaPlayer2", idTableroFind.split(" ")[15]);
+                response.put("casillaPlayer3", idTableroFind.split(" ")[17]);
+                response.put("casillaPlayer4", idTableroFind.split(" ")[19]);
+
+            } else {
                 response.put("ERROR ", "SOME_ERROR_IN_TABLERO");
             }
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
-
-            
         }
     }
-    
+
     @PostMapping("/createBoard/{nickname}")
     public ResponseEntity<Map<String, String>> getStartGame(@PathVariable String nickname) {
         try {
@@ -148,21 +139,20 @@ public class TableroController {
     }
 
     @PostMapping("/addPlayer/name/{nickname}/table/{idTablero}")
-    public ResponseEntity<Map<String, String>> addPlayer(@PathVariable String nickname,@PathVariable Long idTablero) {
+    public ResponseEntity<Map<String, String>> addPlayer(@PathVariable String nickname, @PathVariable Long idTablero) {
         try {
             Map<String, String> response = new HashMap<>();
             String idTableroCreado = tableroService.getAnotherPlayer(nickname, idTablero);
-            if (idTableroCreado.split(" ").length>4) {
+            if (idTableroCreado.split(" ").length > 4) {
                 response.put("idTablero ", idTableroCreado.split(" ")[1]);
-            response.put("Player 1 ", idTableroCreado.split(" ")[3]);
-            response.put("Player 2 ", idTableroCreado.split(" ")[5]);
-            response.put("Player 3 ", idTableroCreado.split(" ")[7]);
-            response.put("Player 4 ", idTableroCreado.split(" ")[9]);
-            }else{
+                response.put("Player 1 ", idTableroCreado.split(" ")[3]);
+                response.put("Player 2 ", idTableroCreado.split(" ")[5]);
+                response.put("Player 3 ", idTableroCreado.split(" ")[7]);
+                response.put("Player 4 ", idTableroCreado.split(" ")[9]);
+            } else {
                 response.put("ERROR ", idTableroCreado.split(" ")[1]);
             }
 
-            
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

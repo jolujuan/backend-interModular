@@ -279,6 +279,6 @@ INSERT INTO casilla (numero, tipoCasilla) VALUES
     (12, 'BONIFICACION'),
     (13, 'RETROCESO'),
     (14, 'NORMAL'),
-    (15, 'BONIFICACION'),
-    (16, 'NORMAL'),
+    (15, 'NORMAL'),
+    (16, 'BONIFICACION'),
     (17, 'LLEGADA');
