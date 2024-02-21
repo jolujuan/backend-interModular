@@ -10,7 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CasillaInfo implements Serializable{
-    private Long id_casilla;
-    private int numero_casilla;
-    private CasillaTipo tipo_casilla;
+    private Long id;
+
+    private Integer numero;
+
+    
+    private CasillaTipo tipoCasilla;
 }

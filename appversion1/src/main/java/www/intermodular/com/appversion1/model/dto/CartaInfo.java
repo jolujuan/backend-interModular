@@ -2,6 +2,11 @@ package www.intermodular.com.appversion1.model.dto;
 
 import java.io.Serializable;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +15,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CartaInfo implements Serializable{
-    private Long id_carta;
-    private TipoTematica tipoTematica_carta;
-    private String pregunta_carta;
-    // private List<RespuestaInfo> respuestas_carta;
+    
+    private Long id;
+
+    private Integer numero;
+
+    
+    private CasillaTipo tipoCasilla;
+   
 }

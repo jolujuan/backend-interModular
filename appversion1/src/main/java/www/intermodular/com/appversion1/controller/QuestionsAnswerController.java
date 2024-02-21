@@ -81,12 +81,12 @@ public class QuestionsAnswerController {
 
     }
 
-    @GetMapping("/questions/category/{category}")
-    public ResponseEntity<Map<String, Object>> getRandomQuestionByCategory(@PathVariable String category) {
+    @GetMapping("/questions/category/{category}/table/{idTable}")
+    public ResponseEntity<Map<String, Object>> getRandomQuestionByCategory(@PathVariable String category,@PathVariable Long idTable) {
 
         try {
 
-            List<QuestionAnswerList> getquestion = questionsAnswerService.getRandomQuestionByCategory(category);
+            List<QuestionAnswerList> getquestion = questionsAnswerService.getRandomQuestionByCategory(category,idTable);
             Map<String, Object> response = new HashMap<>();
             String combinedAnswers = getquestion.get(0).getResultsCorrectAnswer() + ", "
                     + getquestion.get(0).getResultsIncorrectAnswers();
@@ -106,19 +106,23 @@ public class QuestionsAnswerController {
             response.put("answer4",shuffledAnswers.get(3));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
      @GetMapping("/questions/answer")
     public ResponseEntity<Map<String, Object>> answerQuestion(
             @RequestParam("resultsCorrectAnswer") String resultsCorrectAnswer,
-            @RequestParam("idPregunta") Long idPregunta) {
+            @RequestParam("idPregunta") Long idPregunta,@RequestParam Long idTable, @RequestParam String nickname) {
                 try {
-                    boolean isCorrect = questionsAnswerService.isAnswerCorrect(idPregunta, resultsCorrectAnswer);
+                    boolean isCorrect = questionsAnswerService.isAnswerCorrect(idPregunta, resultsCorrectAnswer,idTable, nickname);
                     String respuestaCorrecta = questionsAnswerService.getAnswerCorect(idPregunta);
                 
                  Map<String, Object> response = new HashMap<>();
-                 response.put("Result", isCorrect ? "La respuesta es correcta." : "La respuesta es incorrecta."+"La correcta es "+respuestaCorrecta);
+                 response.put("Result", isCorrect ? "true" : "false");
+                 response.put("Repeat Turn", isCorrect? "true" : "false");
+                 response.put("CorrectAnswer" ,respuestaCorrecta);
                  return ResponseEntity.ok(response);
                 } catch (Exception e) {
                     Map<String, Object> errorResponse = new HashMap<>();

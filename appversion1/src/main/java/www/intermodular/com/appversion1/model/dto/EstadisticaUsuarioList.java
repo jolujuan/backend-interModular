@@ -5,6 +5,7 @@ import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import www.intermodular.com.appversion1.security.entity.UsuarioDb;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,5 +23,5 @@ public class EstadisticaUsuarioList implements Serializable{
 
     private Long preguntasFalladas;
 
-    private Usuario usuario;
+    private UsuarioDb usuario;
 }
